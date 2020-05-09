@@ -102,6 +102,9 @@
   " Quite with q
   nnoremap <silent> q :<C-u>:quit<CR>
 
+  " Recording 
+  nnoremap <leader>q q
+
   " Toggle Tagbar
   nnoremap <leader>; :TagbarToggle<CR>
 
@@ -311,9 +314,9 @@
   nnoremap <silent> [FuzzyFinder]T :BTags <cr>
   nnoremap <silent> [FuzzyFinder]gc :BCommits <cr>
 
-  nnoremap [FuzzyFinder]/ <Plug>(AerojumpBolt)
-  " nnoremap <silent> [FuzzyFinder]/ :BLines <cr>
-  " nnoremap <silent> [FuzzyFinder]me :BLines <cr> def\<space>
+  " nnoremap [FuzzyFinder]/ <Plug>(AerojumpBolt)
+  nnoremap <silent> [FuzzyFinder]/ :BLines <cr>
+  nnoremap <silent> [FuzzyFinder]me :BLines <cr> def\<space>
 
 " -----------------------------------------------------------------------------
 " Dictionary and documentations
@@ -345,6 +348,36 @@
   nnoremap <silent> gr <Plug>(coc-references)
 
   nnoremap <silent> [FuzzyFinder]me :CocList outline<cr>
+
+  " Mapping coc to use c-j and c-k, like vim to go though the list
+  " I saw sugestions to use imap for something 
+  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+ 
+  " BUG WITH VIM ENDSWISE
+  " mappign enter to select/confirm the snippet
+  " if exists('*complete_info')
+  "   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  " else
+  "   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  " endif
+  " TRY HARD!
+  if exists('*complete_info')
+    inoremap <expr> <tab> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<TAB>"
+  else
+    imap <expr> <tab> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
+  endif
+  "TRY HARD2 from coc 
+  " use <tab> for trigger completion and navigate to the next complete item
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+
+  inoremap <silent><expr> <Tab>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
 
 " -----------------------------------------------------------------------------
 " Tabularize

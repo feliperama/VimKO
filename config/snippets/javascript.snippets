@@ -7,7 +7,7 @@ snippet render
 endsnippet
 
 snippet log
-console.log('${1:here}')
+console.log('${1:here}');
 endsnippet
 
 snippet ()
@@ -15,13 +15,13 @@ ${1} => ${2}
 endsnippet
 
 snippet {}
-	(${1}) => {
-		${2}
+(${1}) => {
+	${2}
 }
 endsnippet
 
 snippet import
-	import ${1:foo} from '${2:bar}'
+import ${1:foo} from '${2:bar}'
 endsnippet
 
 snippet "int " "interator" riA
@@ -32,7 +32,7 @@ snippet "let " "let" riA
 let ${1} = ${2};
 endsnippet
 
-snippet "const " "let" riA
+snippet "const " "const" riA
 const ${1} = ${2};
 endsnippet
 
@@ -188,4 +188,14 @@ endsnippet
 
 snippet us.c "useContext" w
 const $1 = useContext($2)${0:;}
+endsnippet
+
+snippet req "const request" w
+const $1 = require('$2');
+endsnippet
+
+snippet for "simple for"
+for (let ${1:i} = ${2:0}; $1 < ${3:n}; $1${4:++}) {
+	$5
+}
 endsnippet

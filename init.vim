@@ -15,10 +15,11 @@ set updatetime=100
 
 " Behavior
 set number
-set relativenumber
+" set relativenumber
+set norelativenumber
 set nowrap
 set inccommand=nosplit
-set list                " Show hidden characters
+set nolist                " Show hidden characters
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:\ ,precedes:«,extends:»
 set clipboard=unnamed
 set foldmethod=indent
@@ -49,7 +50,8 @@ set shiftround    " Round indent to multiple of 'shiftwidth'
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 
 " Searching {{{
-set ignorecase      " Search ignoring case
+" set ignorecase      " Search ignoring case
+set noignorecase      " Search NO ignoring case
 set smartcase       " Keep case when searching with *
 set infercase       " Adjust case in insert completion mode
 set incsearch       " Incremental search

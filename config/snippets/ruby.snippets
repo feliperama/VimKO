@@ -148,3 +148,57 @@ allow_any_instance_of(
 )
 endsnippet
 
+snippet add_index "add index in a migration" b
+add_index :${1:table}, :${2:column}
+endsnippet
+
+
+snippet script "Main script" b
+#!/usr/bin/env ruby
+#
+# Tips:
+#
+# require './lib/class' --> for your classes for example
+# You can use ARGV for your 
+# args = ARGV.map {|x| x.to_i}
+
+$0
+endsnippet
+
+snippet exp_rspecfile "rspecfile"
+require '${1:class_name_at_lib_directory}'
+
+describe ${2:ClassName} do
+	$0
+end
+endsnippet
+
+snippet exp_controllerfile "rspec_controller_file" b
+require 'rails_helper'
+
+RSpec.describe ${1:ControllerClass}, type: :request do
+#	before do
+#		host! 'test.example.com'
+#	end
+#
+#	def perform_request!
+#		post '/xyz', :params => {x:x}, :headers => {x:x} 
+#	end
+
+	$0
+end
+endsnippet
+
+snippet has_many_through "has many through" b
+has_many :${1:destination_class}, :through => :${2:intermediate_model}
+endsnippet
+
+snippet exp_to_eq "expect to eq" b
+expect(${1:subject}).to eq($2)
+endsnippet
+
+snippet do "do"
+do
+	$0
+end
+endsnippet

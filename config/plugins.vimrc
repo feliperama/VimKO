@@ -130,10 +130,13 @@ call plug#begin()
 
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
-    let g:UltiSnipsExpandTrigger="<C-l>"
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/config/snippets']
-    let g:UltiSnipsJumpForwardTrigger="<c-n>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    " let g:UltiSnipsExpandTrigger="<C-l>"
+    let g:UltiSnipsExpandTrigger="<tab>"
+    " let g:UltiSnipsJumpForwardTrigger="<c-n>"
+    " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsJumpForwardTrigger="<c-l>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
   Plug 'honza/vim-snippets'
   " Plug 'wellle/tmux-complete.vim'
@@ -162,10 +165,10 @@ call plug#begin()
 " Ctags
 " -----------------------------------------------------------------------------
   Plug 'xolox/vim-misc'
-  Plug 'xolox/vim-easytags'
-    let g:easytags_always_enabled = 1
-    let g:easytags_async = 1
-    let g:easytags_dynamic_files = 1
+  " Plug 'xolox/vim-easytags'
+  "   let g:easytags_always_enabled = 1
+  "   let g:easytags_async = 1
+  "   let g:easytags_dynamic_files = 1
   Plug 'majutsushi/tagbar'
 
   Plug 'junegunn/vim-peekaboo'
@@ -189,6 +192,7 @@ call plug#begin()
   Plug 'tpope/vim-rails'
   Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
   Plug 'tpope/vim-endwise', { 'for': 'ruby' }
+    " let g:endwise_no_mappings = 1
   " Plug 'uplus/deoplete-solargraph', { 'for': 'ruby' }
   " Plug 'noprompt/vim-yardoc'
   Plug 'tpope/vim-cucumber'
@@ -249,4 +253,20 @@ call plug#begin()
 " Docker
 " -----------------------------------------------------------------------------
   Plug 'ekalinin/Dockerfile.vim'
-  call plug#end()
+
+
+" -----------------------------------------------------------------------------
+" More colorschemes
+" -----------------------------------------------------------------------------
+  Plug 'tomasr/molokai'
+  Plug 'Lokaltog/vim-distinguished'
+  Plug 'fugalh/desert.vim'
+  Plug 'morhetz/gruvbox'
+  Plug 'w0ng/vim-hybrid'
+  Plug 'nanotech/jellybeans.vim'
+
+" -----------------------------------------------------------------------------
+" Linediff
+" -----------------------------------------------------------------------------
+  Plug 'AndrewRadev/linediff.vim'
+call plug#end()

@@ -1,5 +1,9 @@
 # VKO vim configuration
 
+##FELIPE custom
+  Changed to tab to jump (dont need supertabs)
+##
+
 Advanced VIM Configuration for FullStack Developers, for now it's supporting.
 - Backend: Ruby on Rails, Python and Elixir.
 - Front-end: React

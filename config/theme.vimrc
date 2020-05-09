@@ -21,3 +21,5 @@ let g:one_allow_italics = 1
 set background=dark
 
 highlight Normal guibg=none
+highlight iCursor guibg=white
+set guicursor+=i-ci-ve:ver25-iCursor
