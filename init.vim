@@ -78,6 +78,16 @@ au BufNewFile,BufRead Jenkinsfile set filetype=groovy
 " Treat words with dash as a word
 set iskeyword+=-
 
+function! ToggleVerbose()
+    if !&verbose
+        set verbosefile=~/.config/nvim/verbose.log
+        set verbose=9
+    else
+        set verbose=0
+        set verbosefile=
+    endif
+endfunction
+
 " Checkbox toogler
 fu! ToogleCheckbox()
 	let line = getline('.')

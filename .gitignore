@@ -2,3 +2,4 @@ plugged
 autoload
 tags
 node_modules
+*.log

@@ -82,6 +82,8 @@ call plug#begin()
   Plug 'tmhedberg/SimpylFold'
 
   " Navigate and highlight matching words
+  " BUG --> sometimes stop to work with big javscript libraries like
+  " underscore.js. IF % stops to work it's because of this
   Plug 'andymass/vim-matchup'
 
   " Open current workd in Dash
