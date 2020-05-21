@@ -159,6 +159,8 @@ Only tested with Neovim.
 | `<Foldings>r`   | Normal | Recues folding by opening one more level of folds |
 | `<Foldings>R`   | Normal | Open all folds                                    |
 | `<Foldings>Mza` | Normal | Close the others                                  |
+| `<leader>1..n`     | Normal | fold on level 1,2,...n
+| `<leader>0`     | Normal | unfold
 
 ## Git
 | key | Mode | Action |

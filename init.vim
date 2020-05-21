@@ -15,8 +15,8 @@ set updatetime=100
 
 " Behavior
 set number
-" set relativenumber
-set norelativenumber
+set relativenumber
+" set norelativenumber
 set nowrap
 set inccommand=nosplit
 set nolist                " Show hidden characters
