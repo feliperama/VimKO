@@ -127,8 +127,9 @@ call plug#begin()
 " -----------------------------------------------------------------------------
 " Autocomplete and Snippets
 " -----------------------------------------------------------------------------
-  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-    let g:coc_global_extensions = ['coc-solargraph']
+  "Coc from master branch 
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    let g:coc_global_extensions = ['coc-ultisnips', 'coc-solargraph', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
@@ -143,7 +144,7 @@ call plug#begin()
   Plug 'honza/vim-snippets'
   " Plug 'wellle/tmux-complete.vim'
   " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'ervandew/supertab'
+  " Plug 'ervandew/supertab'
 
 " -----------------------------------------------------------------------------
 " Text Objects
@@ -156,7 +157,7 @@ call plug#begin()
   Plug 'thinca/vim-textobj-function-javascript'
   Plug 'inside/vim-textobj-jsxattr'
   Plug 'whatyouhide/vim-textobj-erb'
-  " Plug 'kana/vim-textobj-function'
+  Plug 'kana/vim-textobj-function'
 
   Plug 'tpope/vim-surround'
     let g:surround_35  = "#{\r}"    " #
