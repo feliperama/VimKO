@@ -129,7 +129,17 @@ call plug#begin()
 " -----------------------------------------------------------------------------
   "Coc from master branch 
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-    let g:coc_global_extensions = ['coc-ultisnips', 'coc-solargraph', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+    let g:coc_global_extensions = [
+    \ 'coc-ultisnips',
+    \ 'coc-solargraph',
+    \ 'coc-tslint-plugin',
+    \ 'coc-tsserver',
+    \ 'coc-emmet',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-yank',
+    \ 'coc-prettier']
 
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
@@ -246,6 +256,7 @@ call plug#begin()
 " HTML
 " -----------------------------------------------------------------------------
   Plug 'mattn/emmet-vim'
+  let g:user_emmet_expandabbr_key='<Tab>'
 
 " -----------------------------------------------------------------------------
 " Ansible
