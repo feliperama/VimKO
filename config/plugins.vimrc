@@ -147,11 +147,14 @@ call plug#begin()
     " let g:UltiSnipsJumpForwardTrigger="<c-n>"
     " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
     let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<c-l>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+    " let g:UltiSnipsJumpForwardTrigger="<c-l>"
+    " let g:UltiSnipsJumpBackwardTrigger="<c-h>"
     " BUG: the line below make ultisnips dont look for UltiSnips type on plugins
     " and load just old snipmate (snipmate) directory
     " let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/config/mysnippets"]
+  
+  Plug 'mattn/emmet-vim'
+    let g:user_emmet_expandabbr_key = '<c-l>'
 
   Plug 'honza/vim-snippets'
   Plug 'wellle/tmux-complete.vim'
@@ -257,12 +260,6 @@ call plug#begin()
 " Python
 " -----------------------------------------------------------------------------
   " Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-
-" -----------------------------------------------------------------------------
-" HTML
-" -----------------------------------------------------------------------------
-  Plug 'mattn/emmet-vim'
-  let g:user_emmet_expandabbr_key='<tab>'
 
 " -----------------------------------------------------------------------------
 " Ansible
