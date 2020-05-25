@@ -143,16 +143,18 @@ call plug#begin()
 
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
-    let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/config/snippets']
     " let g:UltiSnipsExpandTrigger="<C-l>"
-    let g:UltiSnipsExpandTrigger="<tab>"
     " let g:UltiSnipsJumpForwardTrigger="<c-n>"
     " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-l>"
     let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+    " BUG: the line below make ultisnips dont look for UltiSnips type on plugins
+    " and load just old snipmate (snipmate) directory
+    " let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/config/mysnippets"]
 
   Plug 'honza/vim-snippets'
-  " Plug 'wellle/tmux-complete.vim'
+  Plug 'wellle/tmux-complete.vim'
   " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   " Plug 'ervandew/supertab'
 
@@ -184,6 +186,9 @@ call plug#begin()
   "   let g:easytags_dynamic_files = 1
   Plug 'majutsushi/tagbar'
 
+" -----------------------------------------------------------------------------
+" Registers and Window
+" -----------------------------------------------------------------------------
   Plug 'junegunn/vim-peekaboo'
   Plug 'junegunn/goyo.vim'
     let g:goyo_height='95%'
@@ -240,7 +245,8 @@ call plug#begin()
   Plug 'epilande/vim-es2015-snippets'
 
   " React code snippets
-  Plug 'epilande/vim-react-snippets'
+  Plug 'epilande/vim-react-snippets' "does not work with filetype javascripreact
+  " Plug 'mlaursen/vim-react-snippets'
 
   Plug 'heavenshell/vim-jsdoc'
   Plug 'yuezk/vim-js'
@@ -256,7 +262,7 @@ call plug#begin()
 " HTML
 " -----------------------------------------------------------------------------
   Plug 'mattn/emmet-vim'
-  let g:user_emmet_expandabbr_key='<Tab>'
+  let g:user_emmet_expandabbr_key='<tab>'
 
 " -----------------------------------------------------------------------------
 " Ansible

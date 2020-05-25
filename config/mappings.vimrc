@@ -245,6 +245,12 @@
   nnoremap <Down>  :resize -2<CR>
   nnoremap <Left>  :vertical resize +10<CR>
   nnoremap <Right> :vertical resize -10<CR>
+  
+" -----------------------------------------------------------------------------
+" Registers
+" -----------------------------------------------------------------------------
+" <Leader>" or @ on normal mode to show registers
+  let g:peekaboo_prefix='<leader>'
 
 " -----------------------------------------------------------------------------
 " Foldings
@@ -339,6 +345,12 @@
   endfunction
 
 " -----------------------------------------------------------------------------
+" UltiSnips
+" -----------------------------------------------------------------------------
+  " Always open at ~/.config/nvim/UltiSnips  
+  nnoremap <leader>es :UltiSnipsEdit<cr>
+
+" -----------------------------------------------------------------------------
 " COC and Gotos
 " -----------------------------------------------------------------------------
   " Remap keys for gotos
@@ -351,8 +363,8 @@
 
   " Mapping coc to use c-j and c-k, like vim to go though the list
   " I saw sugestions to use imap for something 
-  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+  " inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+  " inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
  
   " BUG WITH VIM ENDSWISE
   " mappign enter to select/confirm the snippet
@@ -361,6 +373,8 @@
   " else
   "   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
   " endif
+  
+
   " TRY HARD!
   if exists('*complete_info')
     inoremap <expr> <tab> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<TAB>"
