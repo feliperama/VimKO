@@ -134,12 +134,12 @@ call plug#begin()
     \ 'coc-solargraph',
     \ 'coc-tslint-plugin',
     \ 'coc-tsserver',
-    \ 'coc-emmet',
     \ 'coc-css',
     \ 'coc-html',
     \ 'coc-json',
     \ 'coc-yank',
     \ 'coc-prettier']
+    " \ 'coc-emmet',
 
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
@@ -153,11 +153,19 @@ call plug#begin()
     " and load just old snipmate (snipmate) directory
     " let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/config/mysnippets"]
   
+    " FIXME replace to use coc-emmet -> dont work well with coc-ttserver
+    " because of the filetype javascriptreact
   Plug 'mattn/emmet-vim'
-    let g:user_emmet_expandabbr_key = '<c-l>'
+    " let g:user_emmet_leader_key=',' --> terrible idea, conflict with 
+    "OU para emmet-vim
+    "javascript.jsx because of emmet-vim ... NEED to change to use just coc-emmet
+    " au BufNewFile,BufRead *.jsx setlocal ft=html ft=javascript ft=javascript.jsx
+    "mapping will make coc-emmet trigger without completion. DOESNT work well
+    " inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
+
 
   Plug 'honza/vim-snippets'
-  Plug 'wellle/tmux-complete.vim'
+  " Plug 'wellle/tmux-complete.vim'
   " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   " Plug 'ervandew/supertab'
 
@@ -173,6 +181,9 @@ call plug#begin()
   Plug 'inside/vim-textobj-jsxattr'
   Plug 'whatyouhide/vim-textobj-erb'
   Plug 'kana/vim-textobj-function'
+    " in test
+  Plug 'haya14busa/vim-textobj-function-syntax'
+
 
   Plug 'tpope/vim-surround'
     let g:surround_35  = "#{\r}"    " #
@@ -254,7 +265,11 @@ call plug#begin()
   Plug 'heavenshell/vim-jsdoc'
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'chemzqm/vim-jsx-improve'
+  " We already have things working well without this 
+  " BUT when saves life when breaking lines...
+  " Unique anoying thing is when is javascript file, it's highlighting in red
+  " everything even the parameters.
+Plug 'chemzqm/vim-jsx-improve'
 
 " -----------------------------------------------------------------------------
 " Python

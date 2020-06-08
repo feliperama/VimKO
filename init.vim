@@ -2,6 +2,10 @@ source $HOME/.config/nvim/config/plugins.vimrc
 source $HOME/.config/nvim/config/theme.vimrc
 source $HOME/.config/nvim/config/mappings.vimrc
 
+"NOT SURE, may be a problem for tsscript server
+"I THINK is not necessary, let coc-tsserver and other plugins to made syntax
+" au BufNewFile,BufRead *.jsx setlocal ft=html ft=javascript
+
 set encoding=UTF-8
 set hidden                   " hide buffers when abandoned instead of unload
 set synmaxcol=1000           " Don't syntax highlight long lines

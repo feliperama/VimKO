@@ -181,13 +181,14 @@ for (let ${1:i} = ${2:0}; $1 < ${3:n}; $1${4:++}) {
 }
 endsnippet
 
-snippet "i(mport|mp|m)?" "import" br
+snippet "impf" "import" br
 import ${1} from '${2}';
 endsnippet
 
-snippet "e(xport|xp|x)?" "export" br
-export ${1:default };
+snippet "i(mport|mp|m)?" "import" br
+import '${1:./file.x}';
 endsnippet
+
 
 # snippet "let " "let" riA
 # let ${1} = ${2};
@@ -269,7 +270,6 @@ endsnippet
 # 			${0:<div></div>}
 # 		)
 # 	}
-# ### React
 
 snippet expa "Export arrow function" b
 export const ${1:default} = (${2:args}) {
@@ -282,6 +282,38 @@ export ${1:default }function ${2:name}($3) {
 	$4
 };
 endsnippet
+
+snippet expd "Export function" b
+export default ${1:varName};
+endsnippet
+
+snippet "e(xport|xp|x)?" "export" br
+export ${1:varName};
+endsnippet
+
+
+snippet setf "Set State with function" b
+this.setState(${1:(prevState, prevProps)} => {
+	$2
+}, ${3:callback});
+endsnippet
+
+snippet seto "Set State with object" b
+this.setState({$1}, ${2:callback});
+endsnippet
+
+snippet rfcs "React component function - SIMPLE"
+import React from 'react';
+import '${2:${1/([a-z]*)([A-Z]+)/(?1:$1-)\L$2\E/g}}${3:.styles.scss}';
+
+const ${1:MyComponent} = (props) => (
+	<div className='$2'>$0</div>
+);
+
+export default $1;
+endsnippet
+
+
 ### LESS priority, second option
 priority -50
 snippet "const " "const" riA

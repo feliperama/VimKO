@@ -1,3 +1,4 @@
+" https://vim.fandom.com/wiki/Unused_keys
 " -----------------------------------------------------------------------------
 " Leaders
 " -----------------------------------------------------------------------------
@@ -34,6 +35,11 @@
   " Remove lines with a specify patter
   " TODO make this work with fzf
   nnoremap <leader>rp :g//d<left><left>
+
+  " Break line eficiently
+  " ref: https://stackoverflow.com/questions/18057421/vim-cursor-position-after-expanding-html-tag
+  " inoremap <leader><CR> <CR><C-o>==<C-o>O
+  inoremap <C-n> <CR><C-o>==<C-o>O
 
   " Reload command
   command! Reload :so ~/.config/nvim/init.vim
