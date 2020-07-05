@@ -156,7 +156,8 @@ call plug#begin()
     " FIXME replace to use coc-emmet -> dont work well with coc-ttserver
     " because of the filetype javascriptreact
   Plug 'mattn/emmet-vim'
-    " let g:user_emmet_leader_key=',' --> terrible idea, conflict with 
+    " let g:user_emmet_leader_key=',' --> conflict with files 
+    let g:user_emmet_leader_key=','
     "OU para emmet-vim
     "javascript.jsx because of emmet-vim ... NEED to change to use just coc-emmet
     " au BufNewFile,BufRead *.jsx setlocal ft=html ft=javascript ft=javascript.jsx

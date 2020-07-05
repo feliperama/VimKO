@@ -8,7 +8,8 @@
   nmap      ; [FuzzyFinder]
 
   nnoremap  [Files]   <Nop>
-  nmap      , [Files]
+  nmap      f [Files]
+  " nmap      , [Files]
 
   nnoremap  [Windows]   <Nop>
   nmap      s [Windows]
