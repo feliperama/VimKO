@@ -25,7 +25,14 @@ set nowrap
 set inccommand=nosplit
 set nolist                " Show hidden characters
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:\ ,precedes:«,extends:»
-set clipboard=unnamed
+
+" make all copy/cut save on clipboard also
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed 
+else
+  set clipboard=unnamedplus
+endif
+
 set foldmethod=indent
 set foldlevelstart=99
 

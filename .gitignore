@@ -3,3 +3,4 @@ autoload
 tags
 node_modules
 *.log
+.netrwhist
