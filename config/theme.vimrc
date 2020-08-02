@@ -23,3 +23,12 @@ set background=dark
 highlight Normal guibg=none
 highlight iCursor guibg=white
 set guicursor+=i-ci-ve:ver25-iCursor
+
+
+highlight VertSplit ctermfg=233 guifg=#141414 guibg=#141414
+" recommend color for terminal: 262626 or 212124
+
+" I changed airline/themes/minimalist.vim
+" let N1 = [ '#E4E4E4', '#141400', 254, 237 ]
+" let N2 = [ '#E4E4E4', '#4E4E4E', 254, 239 ]
+" let N3 = [ '#EEEEEE', '#141414', 255, 235 ]
