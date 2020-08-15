@@ -7,5 +7,6 @@
 			"filetypes": ["go"]
 		}
 	},
-  "suggest.enablePreselect": false
+  "suggest.enablePreselect": false,
+  "javascript.suggestionActions.enabled": true 
 }

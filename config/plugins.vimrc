@@ -107,9 +107,13 @@ call plug#begin()
 " -----------------------------------------------------------------------------
 " Sidebar
 " -----------------------------------------------------------------------------
-    Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-    Plug 'ryanoasis/vim-devicons',{ 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-      autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
+  set encoding=UTF-8
+  Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+  " Plug 'ryanoasis/nerd-fonts' --> not sure how to use. People said to use
+  " install.sh to install. Not sure if is a plugin or a SO stuff
+  Plug 'ryanoasis/vim-devicons',{ 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+    autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
+
 
 " -----------------------------------------------------------------------------
 " Airline
@@ -139,6 +143,7 @@ call plug#begin()
     \ 'coc-json',
     \ 'coc-yank',
     \ 'coc-prettier']
+    " \ 'coc-java']
     " \ 'coc-emmet',
 
   Plug 'SirVer/ultisnips'
@@ -156,9 +161,8 @@ call plug#begin()
     " FIXME replace to use coc-emmet -> dont work well with coc-ttserver
     " because of the filetype javascriptreact
   Plug 'mattn/emmet-vim'
-    " let g:user_emmet_leader_key=',' --> conflict with files 
-    let g:user_emmet_leader_key=','
-    "OU para emmet-vim
+    " let g:user_emmet_leader_key=',' "control-y, --> default to trigger things
+    " OU para emmet-vim
     "javascript.jsx because of emmet-vim ... NEED to change to use just coc-emmet
     " au BufNewFile,BufRead *.jsx setlocal ft=html ft=javascript ft=javascript.jsx
     "mapping will make coc-emmet trigger without completion. DOESNT work well
@@ -195,10 +199,7 @@ call plug#begin()
 " Ctags
 " -----------------------------------------------------------------------------
   Plug 'xolox/vim-misc'
-  " Plug 'xolox/vim-easytags'
-  "   let g:easytags_always_enabled = 1
-  "   let g:easytags_async = 1
-  "   let g:easytags_dynamic_files = 1
+  " Plug 'ludovicchabant/vim-gutentags'
   Plug 'majutsushi/tagbar'
 
 " -----------------------------------------------------------------------------
