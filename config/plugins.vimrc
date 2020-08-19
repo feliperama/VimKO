@@ -109,10 +109,11 @@ call plug#begin()
 " -----------------------------------------------------------------------------
   set encoding=UTF-8
   Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+  " FIXME: devicons. Note that nerd-fonts was not in the original one 
   " Plug 'ryanoasis/nerd-fonts' --> not sure how to use. People said to use
   " install.sh to install. Not sure if is a plugin or a SO stuff
-  Plug 'ryanoasis/vim-devicons',{ 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-    autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
+  " Plug 'ryanoasis/vim-devicons',{ 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+  "   autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
 
 
 " -----------------------------------------------------------------------------

@@ -55,6 +55,7 @@
 
   nnoremap <silent> <leader>m :FzfMethods <cr>
 
+  " FIXME made it select the word under cursor by default
   " Highlight cursor word
   nnoremap <Leader>h <Plug>(quickhl-manual-this)
   xmap <Leader>h <Plug>(quickhl-manual-this)
@@ -361,13 +362,29 @@
 " COC and Gotos
 " -----------------------------------------------------------------------------
   " Remap keys for gotos
-  nnoremap <silent> gd <Plug>(coc-definition)
-  nnoremap <silent> gy <Plug>(coc-type-definition)
-  nnoremap <silent> gi <Plug>(coc-implementation)
-  nnoremap <silent> gr <Plug>(coc-references)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
 
   nnoremap <silent> [FuzzyFinder]me :CocList outline<cr>
 
+""BACKUP" map gd to coc definition WITH callback para ctags
+" function! s:GoToDefinition()
+"   if CocActionAsync('jumpDefinition')
+"     return v:true
+"   endif
+
+"   let ret = execute("silent! normal \<C-]>")
+"   if ret =~ "Error" || ret =~ "错误"
+"     call searchdecl(expand('<cword>'))
+"   endif
+" endfunction
+
+" nmap <silent> gd :call <SID>GoToDefinition()<CR>
+
+
+""BACKUP"
   " Mapping coc to use c-j and c-k, like vim to go though the list
   " CAREFUL: disable c-l on emmet for this
   " inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"

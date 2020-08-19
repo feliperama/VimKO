@@ -50,7 +50,7 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
 
 " Java
-autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4
+autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 
 autocmd FileType typescript setlocal expandtab shiftwidth=4 tabstop=4
 
@@ -134,15 +134,3 @@ fu! ToogleCheckbox()
 	call setline('.', line)
 endf
 
-function! s:GoToDefinition()
-  if CocAction('jumpDefinition')
-    return v:true
-  endif
-
-  let ret = execute("silent! normal \<C-]>")
-  if ret =~ "Error" || ret =~ "错误"
-    call searchdecl(expand('<cword>'))
-  endif
-endfunction
-
-nmap <silent> gd :call <SID>GoToDefinition()<CR>
