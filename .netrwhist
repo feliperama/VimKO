@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/felipe/ssense/dm-warehouse-ddd/src/inbound/ui/lambda'
 let g:netrw_dirhist_2='/home/felipe/ssense/workspace/services/wms-java-message-consumer/target/surefire-reports'
 let g:netrw_dirhist_1='/home/felipe/.config/nvim/config'
 let g:netrw_dirhist_0='/home/felipe/ssense/workspace/services/dm-warehouse/node_modules/launchdarkly-node-server-sdk/test'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/home/felipe/ssense/workspace/services/dm-warehouse'
 let g:netrw_dirhist_6='/home/felipe/ssense/workspace/services/dm-warehouse/src/fulfillmentQueueConsumer/builders'
 let g:netrw_dirhist_5='/home/felipe/ssense/workspace/services/wms-java-input/target/surefire-reports'
 let g:netrw_dirhist_4='/home/felipe/ssense/workspace/src'
-let g:netrw_dirhist_3='/Users/felipe/Downloads/Ergodox-bishboria/ErgoDox Acrylic Case'

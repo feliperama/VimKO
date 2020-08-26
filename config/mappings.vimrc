@@ -362,26 +362,26 @@
 " COC and Gotos
 " -----------------------------------------------------------------------------
   " Remap keys for gotos
-  nmap <silent> gd <Plug>(coc-definition)
+  " nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
 
   nnoremap <silent> [FuzzyFinder]me :CocList outline<cr>
 
-""BACKUP" map gd to coc definition WITH callback para ctags
-" function! s:GoToDefinition()
-"   if CocActionAsync('jumpDefinition')
-"     return v:true
-"   endif
+" map gd to coc definition WITH callback para ctags
+function! s:GoToDefinition()
+  if CocActionAsync('jumpDefinition')
+    return v:true
+  endif
 
-"   let ret = execute("silent! normal \<C-]>")
-"   if ret =~ "Error" || ret =~ "错误"
-"     call searchdecl(expand('<cword>'))
-"   endif
-" endfunction
+  let ret = execute("silent! normal \<C-]>")
+  if ret =~ "Error" || ret =~ "错误"
+    call searchdecl(expand('<cword>'))
+  endif
+endfunction
 
-" nmap <silent> gd :call <SID>GoToDefinition()<CR>
+nmap <silent> gd :call <SID>GoToDefinition()<CR>
 
 
 ""BACKUP"
