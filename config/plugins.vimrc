@@ -113,7 +113,8 @@ call plug#begin()
   " Plug 'ryanoasis/nerd-fonts' --> not sure how to use. People said to use
   " install.sh to install. Not sure if is a plugin or a SO stuff
   " Plug 'ryanoasis/vim-devicons',{ 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-  "   autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
+  " Need the following command to work commands inside nerdtree buffer:
+  autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
 
 
 " -----------------------------------------------------------------------------
