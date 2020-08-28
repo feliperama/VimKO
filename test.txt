@@ -1,0 +1,10 @@
+{
+  "json": "somehting",
+  json : "somehting",
+  "asdASd: something,
+  "asdASd" : something,
+  "asdASd:something,
+
+  "ASDASD" :SOMETHING,
+  "ASDASD":SOMETHING,
+}
