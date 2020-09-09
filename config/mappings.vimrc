@@ -91,8 +91,9 @@
   " Substitute all occurences in current file
   nnoremap <Leader>saw :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+  " FELIPE: Removed, * already do but forward instead of backward
   " Select all occurences of the word and display a counter
-  nnoremap * :%s/\<<C-r><C-w>\>//n<cr>0N
+  " nnoremap * :%s/\<<C-r><C-w>\>//n<cr>0N
 
   " Substitute inside selection
   xnoremap s :s//g<Left><Left>
@@ -100,9 +101,10 @@
   " Select pasted text
   nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
+  " FELIPE: removed, it was not adding anything good.
   " Workaround to fix the Next occurence direction
-  nnoremap N n
-  nnoremap n N
+  " nnoremap N n
+  " nnoremap n N
 
   " Yank until end of line
   nnoremap Y y$
@@ -326,7 +328,7 @@
   nnoremap <silent> [FuzzyFinder]g :Find<cr>
   nnoremap <silent> [FuzzyFinder]t :Tags <cr>
   nnoremap <silent> [FuzzyFinder]T :BTags <cr>
-  nnoremap <silent> [FuzzyFinder]gc :BCommits <cr>
+  nnoremap <silent> [FuzzyFinder]G :BCommits <cr>
 
   " nnoremap [FuzzyFinder]/ <Plug>(AerojumpBolt)
   nnoremap <silent> [FuzzyFinder]/ :BLines <cr>
@@ -491,7 +493,7 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
       execute "normal ?function\<CR>"
       normal! vf{%
   endfunction
-  vnoremap af :<C-U>silent! :call JSTextObjectFunction()<CR>
+  " vnoremap af :<C-U>silent! :call JSTextObjectFunction()<CR>
 
   nnoremap <leader>fj :%!python -m json.tool<cr>
 
@@ -518,3 +520,13 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
   nnoremap <silent> [Ruby]i :<C-u>RubyEvalInsert<CR>
 
 
+" -----------------------------------------------------------------------------
+" Json and text general helpers - focused on javascript
+" -----------------------------------------------------------------------------
+
+xnoremap <Leader>j :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)//g<LEFT><LEFT>
+xnoremap <Leader>jj :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)/"\1":\2/g<CR>
+xnoremap <Leader>jo :s/"\([a-zA-Z0-9_]\+\)":\(.*\)/\1:\2/g<CR>
+xnoremap <Leader>js :s/'\([a-zA-Z0-9_]\+\)':\(.*\)/\1:\2/g<CR>
+" TODO make a script to apply multiple operations at once 
+" Map to select everything before a symbol --> https://stackoverflow.com/questions/26853667/using-variable-in-vim-key-mappings

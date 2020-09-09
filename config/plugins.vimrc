@@ -184,13 +184,19 @@ call plug#begin()
   Plug 'lucapette/vim-textobj-underscore'
   Plug 'rhysd/vim-textobj-ruby'
   Plug 'kana/vim-textobj-indent'
+  
   Plug 'thinca/vim-textobj-function-javascript'
+  " --> suggestoin for add typescript, didnt work need tochange the plugin
+  " while search('\v(<async>\s+)?(<function>|(\((\k|:\s\k|,|\s)*\)|\k+|\(.*\):\s\k+)\s*\=\>\s*)', 'bcW') != 0
+  " DONT work for filetype typescript
+  
   Plug 'inside/vim-textobj-jsxattr'
   Plug 'whatyouhide/vim-textobj-erb'
   Plug 'kana/vim-textobj-function'
-    " in test
-  Plug 'haya14busa/vim-textobj-function-syntax'
-
+    " in test: generic, is a callback when the language is not defined. NOT work
+    " very well. Typescript doesnt have a good definiton
+  " Plug 'haya14busa/vim-textobj-function-syntax'
+  
 
   Plug 'tpope/vim-surround'
     let g:surround_35  = "#{\r}"    " #
