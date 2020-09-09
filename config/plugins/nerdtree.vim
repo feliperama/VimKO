@@ -1,7 +1,8 @@
-let NERDTreeQuitOnOpen = 1
+" let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowHidden=1
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeQuitOnOpen = 0
 
 let NERDTreeIgnore = [
 	\ '\.git$', '\.hg$', '\.svn$', '\.stversions$', '\.pyc$', '\.svn$',
