@@ -10,7 +10,7 @@
 
 
  " FLOAT BUFFER 
-let $FZF_DEFAULT_COMMAND='rg --no-ignore-parent --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --glob "!/tmp/*" --glob "!/plugged/*" --glob "!**/*.beam" --glob "!/deps/*" --glob "!.serverless/*" --glob "!.webpack/*"'
+let $FZF_DEFAULT_COMMAND='rg --no-ignore-parent --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --glob "!/tmp/*" --glob "!/plugged/*" --glob "!**/*.beam" --glob "!/deps/*" --glob "!.serverless/*" --glob "!.webpack/*" --glob "!coverage/*"'
 
 "old one
 " command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --color "always" '.shellescape(<q-args>), 1, <bang>0)

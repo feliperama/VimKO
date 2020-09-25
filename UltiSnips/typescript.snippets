@@ -1,0 +1,38 @@
+snippet class "typescript class"
+class ${1:`!p snip.rv = snip.basename`} ${2:extends ${3:OtherClass} }{
+	$0
+}
+endsnippet
+
+# snippet foo ""
+# `!p snip.rv = snip.basename`
+# endsnippet
+
+global !p
+def down_first_char(word):
+  return word[0].lower() + word[1:]
+
+def filename_1st_downcase():
+	return down_first_char(snip.basename)
+endglobal
+
+snippet	foo ""
+`!p snip.rv = filename_1st_downcase()`
+endsnippet
+
+snippet dddl "typescript lambda"
+import { `!p snip.rv = snip.basename`Event } from './events/`!p snip.rv = snip.basename`Event';
+import { `!p snip.rv = snip.basename`Command } from '../../application/services/`!p snip.rv = snip.basename`Command';
+import { `!p snip.rv = snip.basename`Handler } from '../../application/services/`!p snip.rv = snip.basename`Handler';
+import { TYPES } from '../di/types';
+import { container } from '../di/inversify.config';
+
+export const handler = async (event: `!p snip.rv = snip.basename`Event) => {
+    const `!p snip.rv = filename_1st_downcase()`Handler = container.get<`!p snip.rv = snip.basename`Handler>(TYPES.`!p snip.rv = snip.basename`Handler);
+
+    const command = new `!p snip.rv = snip.basename`Command(${1:commandParameters});
+    ${2:const ${4:handlerResult}: ${3:ResultType} = }await `!p snip.rv = filename_1st_downcase()`Handler.handle(command);
+
+    return { $4$0 };
+};
+endsnippet

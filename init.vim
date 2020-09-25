@@ -14,8 +14,6 @@ set spelllang=en
 
 " set tags=./.tags
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=100
 
 " Behavior
 set number
@@ -55,7 +53,7 @@ autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 autocmd FileType typescript setlocal expandtab shiftwidth=4 tabstop=4
 
 " Tabs and Indents
-set textwidth=80  " Text width maximum chars before wrapping
+" set textwidth=80  " Text width maximum chars before wrapping
 set expandtab     " Don't expand tabs to spaces.
 set tabstop=2     " The number of spaces a tab is
 set softtabstop=2 " While performing editing operations
@@ -72,8 +70,19 @@ set noignorecase      " Search NO ignoring case
 set smartcase       " Keep case when searching with *
 set infercase       " Adjust case in insert completion mode
 set incsearch       " Incremental search
-set hlsearch        " Highlight search results
-set wrapscan        " Searches wrap around the end of the file
+set nohlsearch        " Highlight search results
+" opt1
+" autocmd cursorhold * set nohlsearch
+" autocmd cursormoved * set hlsearch
+" opt2
+" autocmd cursorhold * set nohlsearch
+" noremap n :set hlsearch<cr>n
+" noremap N :set hlsearch<cr>N
+" noremap / :set hlsearch<cr>/
+" noremap ? :set hlsearch<cr>?set wrapscan        " Searches wrap around the end of the file
+" Smaller updatetime for CursorHold & CursorHoldI
+noremap * :set hlsearch<cr>*
+set updatetime=100
 set showmatch       " Jump to matching bracket
 set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren

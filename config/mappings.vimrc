@@ -53,14 +53,15 @@
   " imap jk <Esc>
   " imap kj <Esc>
 
-  nnoremap <silent> <leader>m :FzfMethods <cr>
-
-  " FIXME made it select the word under cursor by default
   " Highlight cursor word
-  nnoremap <Leader>h <Plug>(quickhl-manual-this)
+  nmap <Leader>h <Plug>(quickhl-manual-this)
   xmap <Leader>h <Plug>(quickhl-manual-this)
-  nnoremap <Leader>H <Plug>(quickhl-manual-reset)
+  nmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
+  xmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
+  nmap <Leader>H <Plug>(quickhl-manual-reset)
   xmap <Leader>H <Plug>(quickhl-manual-reset)
+  nmap <Leader>Z <Plug>(quickhl-manual-clear)
+  xmap <Leader>Z <Plug>(quickhl-manual-clear)
 
   " Highlight selected lines
   function! HighlightRegion()
@@ -311,7 +312,7 @@
   nnoremap <silent> [Files]Y :let @+=expand("%:p")<CR>:echo 'Absolute pat copied to clipboard.'<CR>
 
   " Sidebars
-  nnoremap <silent> [Files]a :NERDTreeFind<CR>
+  nnoremap <silent> [Files]f :NERDTreeFind<CR>
   nnoremap <silent> [Files]e :NERDTreeToggle<CR>
 
   " Find all

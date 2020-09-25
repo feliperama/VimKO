@@ -102,8 +102,6 @@ call plug#begin()
   source $HOME/.config/nvim/config/plugins/fzf.vimrc
   let g:fzf_layout = { 'down': '~40%' }
 
-  Plug 'alexvko/fzf-to-functions.vim'
-
 " -----------------------------------------------------------------------------
 " Sidebar
 " -----------------------------------------------------------------------------
@@ -134,6 +132,7 @@ call plug#begin()
 " Autocomplete and Snippets
 " -----------------------------------------------------------------------------
   "Coc from master branch 
+  " FIXME https://www.reddit.com/r/neovim/comments/ejpr2p/do_you_work_with_coc_together_with_vimtex_or/
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
     let g:coc_global_extensions = [
     \ 'coc-ultisnips',
@@ -280,6 +279,10 @@ call plug#begin()
   " Unique anoying thing is when is javascript file, it's highlighting in red
   " everything even the parameters.
 Plug 'chemzqm/vim-jsx-improve'
+
+" IMPORTANT: typescript
+" snippets are shared because honza/snippets extends it!! If we use coc it
+" wouldn't work
 
 " -----------------------------------------------------------------------------
 " Python
