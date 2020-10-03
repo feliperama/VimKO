@@ -524,10 +524,12 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
 " -----------------------------------------------------------------------------
 " Json and text general helpers - focused on javascript
 " -----------------------------------------------------------------------------
-
-xnoremap <Leader>j :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)//g<LEFT><LEFT>
+xnoremap <Leader>j :s/\([^:]\+\):\s*\(.*\)[,]/\1: \2,/g<LEFT><LEFT><LEFT><LEFT><LEFT>
+xnoremap <Leader>= :s/\([^=]\+\)=\s*\(.*\)[;]/\1= \2;/g<LEFT><LEFT><LEFT><LEFT><LEFT>
+"s/\([^:]\+\)\s=\s*\(.*\)/(\1)(\2)
+" xnoremap <Leader>j :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)//g<LEFT><LEFT>
 xnoremap <Leader>jj :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)/"\1":\2/g<CR>
-xnoremap <Leader>jo :s/"\([a-zA-Z0-9_]\+\)":\(.*\)/\1:\2/g<CR>
+xnoremap <Leader>jo :s/"\([a-zA-Z0-9_]\+\)"\s*:\(.*\)/\1:\2/g<CR>
 xnoremap <Leader>js :s/'\([a-zA-Z0-9_]\+\)':\(.*\)/\1:\2/g<CR>
 " TODO make a script to apply multiple operations at once 
 " Map to select everything before a symbol --> https://stackoverflow.com/questions/26853667/using-variable-in-vim-key-mappings

@@ -51,6 +51,7 @@ autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 
 autocmd FileType typescript setlocal expandtab shiftwidth=4 tabstop=4
+autocmd FileType snippets setlocal expandtab shiftwidth=4 tabstop=4
 
 " Tabs and Indents
 " set textwidth=80  " Text width maximum chars before wrapping
