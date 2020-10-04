@@ -75,6 +75,7 @@
 
   " Checkbox
   nnoremap <silent> <leader>x :call ToogleCheckbox()<cr>
+  xnoremap <silent> <leader>x :call ToogleCheckbox()<cr>
   nnoremap <leader>tcc :set cursorcolumn!<CR>
 
   " Indent file
