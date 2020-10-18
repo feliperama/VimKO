@@ -78,8 +78,8 @@
   xnoremap <silent> <leader>x :call ToogleCheckbox()<cr>
   nnoremap <leader>tcc :set cursorcolumn!<CR>
 
-  " Indent file
-  nnoremap <leader>e =ae<C-o>
+  " Indent file -> FIXME Temporalilly comment out due conflictwith vdebug
+  " nnoremap <leader>e =ae<C-o>
 
   " Indent paragraph
   nnoremap <leader>a =ip
@@ -273,6 +273,10 @@
   nnoremap <silent> <leader>3 :let &l:foldlevel = 2<cr>
   nnoremap <silent> <leader>4 :let &l:foldlevel = 3<cr>
   nnoremap <silent> <leader>5 :let &l:foldlevel = 4<cr>
+  nnoremap <silent> <leader>6 :let &l:foldlevel = 5<cr>
+  nnoremap <silent> <leader>7 :let &l:foldlevel = 6<cr>
+  nnoremap <silent> <leader>8 :let &l:foldlevel = 7<cr>
+  nnoremap <silent> <leader>9 :let &l:foldlevel = 8<cr>
   nnoremap <silent> <leader>0 :let &l:foldlevel = 20<cr>
 
 " -----------------------------------------------------------------------------
@@ -530,7 +534,6 @@ xnoremap <Leader>= :s/\([^=]\+\)=\s*\(.*\)[;]/\1= \2;/g<LEFT><LEFT><LEFT><LEFT><
 "s/\([^:]\+\)\s=\s*\(.*\)/(\1)(\2)
 " xnoremap <Leader>j :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)//g<LEFT><LEFT>
 xnoremap <Leader>jj :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)/"\1":\2/g<CR>
-xnoremap <Leader>jo :s/"\([a-zA-Z0-9_]\+\)"\s*:\(.*\)/\1:\2/g<CR>
-xnoremap <Leader>js :s/'\([a-zA-Z0-9_]\+\)':\(.*\)/\1:\2/g<CR>
+xnoremap <Leader>jo :s/["']\([a-zA-Z0-9_]\+\)["']\s*:\(.*\)/\1:\2/g<CR>
 " TODO make a script to apply multiple operations at once 
 " Map to select everything before a symbol --> https://stackoverflow.com/questions/26853667/using-variable-in-vim-key-mappings

@@ -314,4 +314,15 @@ Plug 'chemzqm/vim-jsx-improve'
 " Linediff
 " -----------------------------------------------------------------------------
   Plug 'AndrewRadev/linediff.vim'
+
+" -----------------------------------------------------------------------------
+" PHP and VDEBUG
+" -----------------------------------------------------------------------------
+  Plug 'vim-vdebug/vdebug'
+  let g:vdebug_options = {'port': '9001'}
+  let g:vdebug_options = {'debug_file': '/home/felipe/vdebug.log'}
+
+
 call plug#end()
+
+
