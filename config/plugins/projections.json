@@ -16,5 +16,13 @@
       "end"
     ],
     "type": "test"
+  },
+  "src/*.ts" : {
+    "alternate": "tests/unit/{}.test.ts",
+    "type": "source"
+  },
+  "tests/unit/*.test.ts" : {
+    "alternate" : "src/{}.ts",
+    "type": "tests"
   }
 }
