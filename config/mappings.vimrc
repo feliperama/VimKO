@@ -134,8 +134,9 @@
   vnoremap <expr> cn "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgn"
   vnoremap <expr> cN "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgN"
 
-  " Save with sudo
-  cmap W!! w !sudo tee % >/dev/null
+  " Save with sudo (not working on neovim, workaround with plugin suda.vim)
+  " cmap w!! w !sudo tee % >/dev/null
+  cmap w!! SudaWrite
 
   cmap AC :call CreateAlternateFile()<CR>
 
@@ -334,7 +335,9 @@
   nnoremap <silent> [FuzzyFinder]g :Find<cr>
   nnoremap <silent> [FuzzyFinder]t :Tags <cr>
   nnoremap <silent> [FuzzyFinder]T :BTags <cr>
+  " TODO use G for find using gitignore
   nnoremap <silent> [FuzzyFinder]G :BCommits <cr>
+  nnoremap <silent> [FuzzyFinder]Gc :BCommits <cr>
 
   " nnoremap [FuzzyFinder]/ <Plug>(AerojumpBolt)
   nnoremap <silent> [FuzzyFinder]/ :BLines <cr>
@@ -488,6 +491,8 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
       VimuxRunCommand("clear; be rake test TEST=" . a:file_name)
     elseif(match(a:file_name, 'tests/flows/.*_process.rb') != -1)
       VimuxRunCommand("clear; bundle exec flows test " . a:file_name)
+    else
+      echo "doesnt worked"
     endif
   endfunction
 
@@ -504,6 +509,37 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
   nnoremap <leader>fj :%!python -m json.tool<cr>
 
   nnoremap <leader>jsd <Plug>(jsdoc)
+
+  function! JumpToAlternateWithTestPrefix(prefix) 
+    let filename = expand('%')
+    let extension = expand('%:e')
+    let alternate
+
+    echo '@@@ ' . filename . extension
+
+    " if(match(filename, '.*test.' . extension))
+    "   test_prefix_size = strlen('tests/' . prefix .'/')
+    "   tail_size = -1 * strlen('test.' . extension) - 1
+    "   alternate = 'src/' . filename[test_prefix_size:tail_size] . extension
+    " elseif(filename[0:2] ==# 'src')
+    "   src_prefix_size = strlen('src/')
+    "   tail_size = -1 * strlen(extension) - 1
+    "   alternate = 'tests/' . filename[src_prefix_size:tail_size] . 'tests.' . extension
+    " endif 
+
+    " if strlen(alternate) == 0
+    "   echohl WarningMsg | echo "Alternate file not found!" | echohl None 
+    " elseif filereadable(alternate)
+    "   exec ':e ' . alternate
+    " else
+    "   " TODO: option to create te file, creating inclusive the filepath
+   " endif
+      
+  endfunction
+
+  " command A already solved with vim projections!
+  " command A call JumpToAlternateWithTestPrefix('unit')
+  " command! Af call JumpToAlternateWithTestPrefix('functional')
 
 " -----------------------------------------------------------------------------
 " Elixir

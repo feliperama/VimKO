@@ -319,9 +319,22 @@ Plug 'chemzqm/vim-jsx-improve'
 " PHP and VDEBUG
 " -----------------------------------------------------------------------------
   Plug 'vim-vdebug/vdebug'
-  let g:vdebug_options = {'port': '9001'}
-  let g:vdebug_options = {'debug_file': '/home/felipe/vdebug.log'}
+  " let g:vdebug_options = {'port': '9001'}
+  " let g:vdebug_options = {'debug_file': '/home/felipe/vdebug.log'}
+    let g:vdebug_options = {
+          \ 'port' : 9001,
+          \ 'ide_key' : 'VSCODE',
+          \ 'path_maps': {
+              \ '/www/vhosts/hqm.ssense.com/': '/home/felipe/ssense/workspace/services/hq-central/'
+          \ }
+          \}
 
+
+" -----------------------------------------------------------------------------
+" FIXES/Temporary
+" -----------------------------------------------------------------------------
+  " sudo tee not working on neovim
+  Plug 'lambdalisue/suda.vim'
 
 call plug#end()
 
