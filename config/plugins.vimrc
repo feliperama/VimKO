@@ -143,7 +143,8 @@ call plug#begin()
     \ 'coc-html',
     \ 'coc-json',
     \ 'coc-yank',
-    \ 'coc-prettier']
+    \ 'coc-prettier',
+    \ 'coc-phpls']
     " \ 'coc-java']
     " \ 'coc-emmet',
 

@@ -24,5 +24,13 @@
   "tests/unit/*.test.ts" : {
     "alternate" : "src/{}.ts",
     "type": "tests"
+  },
+  "src/*.php" : {
+    "alternate": "tests/unit/{}Test.php",
+    "type": "source"
+  },
+  "tests/unit/*Test.php" : {
+    "alternate" : "src/{}.php",
+    "type": "tests"
   }
 }
