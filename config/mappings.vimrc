@@ -279,6 +279,12 @@
   nnoremap <silent> <leader>8 :let &l:foldlevel = 7<cr>
   nnoremap <silent> <leader>9 :let &l:foldlevel = 8<cr>
   nnoremap <silent> <leader>0 :let &l:foldlevel = 20<cr>
+  " FIXME: For somereason, cant fold php functions like this (the content of
+  " return mess something)
+  "
+    " public function isUserOrderWebsite(): bool {
+    "     return $this->orderSource === 'ui-website' && $this->origin === self::ORDER_ORIGIN_USERORDER;
+    " }
 
 " -----------------------------------------------------------------------------
 " Tabs
