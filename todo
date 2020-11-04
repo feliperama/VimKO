@@ -1,0 +1,8 @@
+- add unit tests to leader t/T for php and javascript mocha or jest.
+- problem when on php search with * is geting the - signal after some stuff
+- fix folding on php (is on the slack channel)
+- Createa search where I can define an aditional glob (to find on specific folders)
+  * understand and refactore the searches if needed. The non gitignore sometimes is good,
+    sometimes is crap. I think the ;G map is planned to use the gitignore
+  * there is some maps that I NEVER use tbh although interesting
+
