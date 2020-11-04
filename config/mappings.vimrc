@@ -487,7 +487,9 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
   endfunction
 
   function! RunTestsOnLeftPane(file_name)
-    if(match(a:file_name, '_spec.rb') != -1)
+    if( match(a:file_name, 'tests/unit/.*Test.php') != -1)
+      VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . a:file_name)
+    elseif(match(a:file_name, '_spec.rb') != -1)
       VimuxRunCommand("clear; bundle exec rspec " . a:file_name . " --fail-fast -fd")
     elseif(match(a:file_name, '.feature') != -1)
       VimuxRunCommand("clear; bin/spring cucumber " . a:file_name . " --fail-fast --profile")
