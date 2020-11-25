@@ -342,7 +342,8 @@
   nnoremap <silent> [FuzzyFinder]t :Tags <cr>
   nnoremap <silent> [FuzzyFinder]T :BTags <cr>
   " TODO use G for find using gitignore
-  nnoremap <silent> [FuzzyFinder]G :BCommits <cr>
+  nnoremap <silent> [FuzzyFinder]G :FindCode <cr>
+  nnoremap <silent> [FuzzyFinder]Gt :FindTest <cr>
   nnoremap <silent> [FuzzyFinder]Gc :BCommits <cr>
 
   " nnoremap [FuzzyFinder]/ <Plug>(AerojumpBolt)
@@ -486,19 +487,20 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
     call VimuxSendKeys("Enter")
   endfunction
 
-  function! RunTestsOnLeftPane(file_name)
-    if( match(a:file_name, 'tests/unit/.*Test.php') != -1)
-      VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . a:file_name)
-    elseif(match(a:file_name, '_spec.rb') != -1)
-      VimuxRunCommand("clear; bundle exec rspec " . a:file_name . " --fail-fast -fd")
-    elseif(match(a:file_name, '.feature') != -1)
-      VimuxRunCommand("clear; bin/spring cucumber " . a:file_name . " --fail-fast --profile")
-    elseif(match(a:file_name, 'test/.*_test.exs') != -1)
-      VimuxRunCommand("clear; mix test " . a:file_name)
-    elseif(match(a:file_name, 'test/.*_test.rb') != -1)
-      VimuxRunCommand("clear; be rake test TEST=" . a:file_name)
-    elseif(match(a:file_name, 'tests/flows/.*_process.rb') != -1)
-      VimuxRunCommand("clear; bundle exec flows test " . a:file_name)
+  function! RunTestsOnLeftPane(file_name_full_path)
+    if( match(a:file_name_full_path, 'tests/unit/.*Test.php') != -1)
+      let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
+      VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . relative_path)
+    elseif(match(a:file_name_full_path, '_spec.rb') != -1)
+      VimuxRunCommand("clear; bundle exec rspec " . a:file_name_full_path . " --fail-fast -fd")
+    elseif(match(a:file_name_full_path, '.feature') != -1)
+      VimuxRunCommand("clear; bin/spring cucumber " . a:file_name_full_path . " --fail-fast --profile")
+    elseif(match(a:file_name_full_path, 'test/.*_test.exs') != -1)
+      VimuxRunCommand("clear; mix test " . a:file_name_full_path)
+    elseif(match(a:file_name_full_path, 'test/.*_test.rb') != -1)
+      VimuxRunCommand("clear; be rake test TEST=" . a:file_name_full_path)
+    elseif(match(a:file_name_full_path, 'tests/flows/.*_process.rb') != -1)
+      VimuxRunCommand("clear; bundle exec flows test " . a:file_name_full_path)
     else
       echo "doesnt worked"
     endif
@@ -513,8 +515,6 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
       normal! vf{%
   endfunction
   " vnoremap af :<C-U>silent! :call JSTextObjectFunction()<CR>
-
-  nnoremap <leader>fj :%!python -m json.tool<cr>
 
   nnoremap <leader>jsd <Plug>(jsdoc)
 
@@ -581,3 +581,6 @@ xnoremap <Leader>jj :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)/"\1":\2/g<CR>
 xnoremap <Leader>jo :s/["']\([a-zA-Z0-9_]\+\)["']\s*:\(.*\)/\1:\2/g<CR>
 " TODO make a script to apply multiple operations at once 
 " Map to select everything before a symbol --> https://stackoverflow.com/questions/26853667/using-variable-in-vim-key-mappings
+
+nnoremap <leader>fj :%!python -m json.tool<cr>
+xnoremap <leader>fj :!python -m json.tool<cr>
