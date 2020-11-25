@@ -50,6 +50,7 @@ autocmd FileType typescript setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 autocmd FileType snippets setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
+autocmd FileType php setlocal iskeyword-=-
 
 " Tabs and Indents
 " set textwidth=80  " Text width maximum chars before wrapping
@@ -102,6 +103,7 @@ au BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
 " Treat words with dash as a word
 set iskeyword+=-
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
 
 function! ToggleVerbose()
     if !&verbose
