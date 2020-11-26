@@ -80,6 +80,7 @@ Only tested with Neovim.
 | `<Tabs>t` | Normal | Open new tab |
 | `<Tabs>l` | Normal | Next tab     |
 | `<Tabs>h` | Normal | Prev tab     |
+| `<Tabs>m` | Normal | Move current buffer to new tab     |
 
 ## Files `,`
 | key         | Mode   | Action                                |
