@@ -53,7 +53,7 @@ autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType php setlocal iskeyword-=-
 
 " Tabs and Indents
-" set textwidth=80  " Text width maximum chars before wrapping
+set textwidth=80  " Text width maximum chars before wrapping
 set expandtab     " Don't expand tabs to spaces.
 set tabstop=2     " The number of spaces a tab is
 set softtabstop=2 " While performing editing operations
