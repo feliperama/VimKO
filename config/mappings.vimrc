@@ -482,6 +482,7 @@
   " Select current paragraph and send it to tmux
   nnoremap <leader>! vip<leader>ts<CR>
 
+  " Use normal mode when a buffer is opened. Use i to return. E.g: after ;g to find something
   tnoremap jj <C-\><C-n>
 
   function! VimuxSlime()
