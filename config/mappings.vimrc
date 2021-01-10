@@ -490,7 +490,7 @@
   endfunction
 
   function! RunTestsOnLeftPane(file_name_full_path)
-    if( match(a:file_name_full_path, 'tests/unit/.*Test.php') != -1)
+    if( match(a:file_name_full_path, 'tests/.*Test.php') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . relative_path)
     elseif(match(a:file_name_full_path, '_spec.rb') != -1)
