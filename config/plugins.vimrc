@@ -114,7 +114,6 @@ call plug#begin()
   " Need the following command to work commands inside nerdtree buffer:
   autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
 
-
 " -----------------------------------------------------------------------------
 " Airline
 " -----------------------------------------------------------------------------
@@ -133,7 +132,7 @@ call plug#begin()
 " -----------------------------------------------------------------------------
   "Coc from master branch 
   " FIXME https://www.reddit.com/r/neovim/comments/ejpr2p/do_you_work_with_coc_together_with_vimtex_or/
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
     \ 'coc-ultisnips',
     \ 'coc-solargraph',
@@ -330,6 +329,9 @@ Plug 'chemzqm/vim-jsx-improve'
           \ }
           \}
 
+" ALTERNATIVE: vimspector
+  " Plug 'puremourning/vimspector'
+  "   let g:vimspector_enable_mappings = 'HUMAN'
 
 " -----------------------------------------------------------------------------
 " FIXES/Temporary
