@@ -124,7 +124,7 @@
   nmap <silent> / <Plug>(easymotion-overwin-f2)
 
   " Paste without yank
-  vnoremap p "_dP
+  " vnoremap p "_dP
 
   " Change current word in a repeatable manner
   nnoremap cn *``cgn
