@@ -46,7 +46,7 @@
   command! Reload :so ~/.config/nvim/init.vim
 
   " go to normal mode and save
-  inoremap ;w <Esc> :w<CR> :call RunTestsOnLeftPane(expand('%')) <CR>
+  " inoremap ;w <Esc> :w<CR> :call RunTestsOnLeftPane(expand('%')) <CR>
   nnoremap ;w :w<CR>
 
   " esc in insert mode
