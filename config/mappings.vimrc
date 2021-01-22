@@ -496,7 +496,7 @@
       VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . relative_path)
     elseif( match(a:file_name_full_path, '**.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
-      VimuxRunCommand("mocha --require ts-node/register --full-trace " . relative_path)
+      VimuxRunCommand("NODE_ENV=dev mocha --require ts-node/register --full-trace --bail " . relative_path)
     elseif(match(a:file_name_full_path, '_spec.rb') != -1)
       VimuxRunCommand("clear; bundle exec rspec " . a:file_name_full_path . " --fail-fast -fd")
     elseif(match(a:file_name_full_path, '.feature') != -1)
