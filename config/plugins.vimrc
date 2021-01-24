@@ -4,7 +4,7 @@ call plug#begin()
 " General
 " -----------------------------------------------------------------------------
   " Insert and delete brakets, parens, quotes.
-  Plug 'jiangmiao/auto-pairs'
+  " Plug 'jiangmiao/auto-pairs'
 
   " granular project configuration using projections
   Plug 'tpope/vim-projectionist'
@@ -16,7 +16,6 @@ call plug#begin()
   " Slack on VIM
   Plug 'yaasita/edit-slack.vim'
 
-  Plug 'sheerun/vim-polyglot'
 
   " Edit selected code in new buffer
   Plug 'chrisbra/NrrwRgn'
@@ -143,9 +142,9 @@ call plug#begin()
     \ 'coc-json',
     \ 'coc-yank',
     \ 'coc-prettier',
-    \ 'coc-phpls']
+    \ 'coc-phpls',
+    \ 'coc-emmet']
     " \ 'coc-java']
-    " \ 'coc-emmet',
 
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
@@ -162,12 +161,14 @@ call plug#begin()
     " FIXME replace to use coc-emmet -> dont work well with coc-ttserver
     " because of the filetype javascriptreact
   Plug 'mattn/emmet-vim'
+    " this add the coc react jsx filetype to emmet-vim
+    autocmd FileType javascriptreact EmmetInstall
     " let g:user_emmet_leader_key=',' "control-y, --> default to trigger things
     " OU para emmet-vim
     "javascript.jsx because of emmet-vim ... NEED to change to use just coc-emmet
     " au BufNewFile,BufRead *.jsx setlocal ft=html ft=javascript ft=javascript.jsx
     "mapping will make coc-emmet trigger without completion. DOESNT work well
-    " inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
+    inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
 
 
   Plug 'honza/vim-snippets'
@@ -274,15 +275,23 @@ call plug#begin()
   Plug 'heavenshell/vim-jsdoc'
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
+
   " We already have things working well without this 
   " BUT when saves life when breaking lines...
   " Unique anoying thing is when is javascript file, it's highlighting in red
   " everything even the parameters.
-Plug 'chemzqm/vim-jsx-improve'
+  Plug 'chemzqm/vim-jsx-improve'
 
 " IMPORTANT: typescript
 " snippets are shared because honza/snippets extends it!! If we use coc it
 " wouldn't work
+
+
+" For javacript and many others, for some reasons need to be after
+  Plug 'sheerun/vim-polyglot'
+    " need to not conflict with vim-jsx-pretty 
+    let g:polyglot_disabled = ['jsx']
+
 
 " -----------------------------------------------------------------------------
 " Python
@@ -298,7 +307,6 @@ Plug 'chemzqm/vim-jsx-improve'
 " Docker
 " -----------------------------------------------------------------------------
   Plug 'ekalinin/Dockerfile.vim'
-
 
 " -----------------------------------------------------------------------------
 " More colorschemes
@@ -339,6 +347,7 @@ Plug 'chemzqm/vim-jsx-improve'
   " sudo tee not working on neovim
   Plug 'lambdalisue/suda.vim'
 
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 
