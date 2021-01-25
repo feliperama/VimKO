@@ -17,6 +17,14 @@
     ],
     "type": "test"
   },
+  "order-management/legal-entity/src/*.ts" : {
+    "alternate": "order-management/legal-entity/tests/unit/{}.test.ts",
+    "type": "source"
+  },
+  "order-management/legal-entity/tests/unit/*.test.ts" : {
+    "alternate" : "order-management/legal-entity/src/{}.ts",
+    "type": "tests"
+  },
   "src/*.ts" : {
     "alternate": "tests/unit/{}.test.ts",
     "type": "source"
