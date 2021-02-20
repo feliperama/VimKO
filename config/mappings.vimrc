@@ -49,6 +49,9 @@
   " inoremap ;w <Esc> :w<CR> :call RunTestsOnLeftPane(expand('%')) <CR>
   nnoremap ;w :w<CR>
 
+  " Jump to alternate file
+  nnoremap ;a :A<CR>
+
   " esc in insert mode
   " imap jk <Esc>
   " imap kj <Esc>

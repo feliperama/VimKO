@@ -17,8 +17,6 @@ set spelllang=en
 
 " Behavior
 set number
-set relativenumber
-" set norelativenumber
 set nowrap
 set inccommand=nosplit
 set nolist                " Show hidden characters
@@ -51,6 +49,7 @@ autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 autocmd FileType snippets setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType php setlocal iskeyword-=-
+autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 
 " Tabs and Indents
 set textwidth=80  " Text width maximum chars before wrapping
@@ -92,11 +91,13 @@ set cpoptions-=m    " showmatch will wait 0.5s or until a char is typed
 let g:AutoClosePairs = { '#{': '}'}
 let g:AutoCloseProtectedRegions = ["Character"]
 
-" switch to relative numbers in normal mode
-autocmd BufLeave * :set norelativenumber
-autocmd BufEnter * :set relativenumber
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
+set norelativenumber
+" set relativenumber
+" " switch to relative numbers in normal mode
+" autocmd BufLeave * :set norelativenumber
+" autocmd BufEnter * :set relativenumber
+" autocmd InsertEnter * :set norelativenumber
+" autocmd InsertLeave * :set relativenumber
 
 " Groovy syntax highlighting for Jenkinsfiles
 au BufNewFile,BufRead Jenkinsfile set filetype=groovy

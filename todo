@@ -6,3 +6,15 @@
     sometimes is crap. I think the ;G map is planned to use the gitignore
   * there is some maps that I NEVER use tbh although interesting
 
+- feature: search the entire word selected on visual mode (\<word\>)
+- Improve the replaces (or learn regex) for the following paterns:
+ json
+ object javascript
+ new: array (hashset) php: =>
+
+- Search where the first word is to be used to exclude dir? is that really
+  usefull? maybe a list ignore stuff and process it e.g: ".php,.html,build/**"
+
+
+  HTW this is not working colors:
+src/gateway/managers/orders/OrderManager.php

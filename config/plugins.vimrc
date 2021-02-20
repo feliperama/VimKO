@@ -135,12 +135,13 @@ call plug#begin()
     let g:coc_global_extensions = [
     \ 'coc-ultisnips',
     \ 'coc-solargraph',
-    \ 'coc-tslint-plugin',
     \ 'coc-tsserver',
     \ 'coc-css',
     \ 'coc-html',
     \ 'coc-json',
     \ 'coc-yank',
+    \ 'coc-prettier',
+    \ 'coc-eslint',
     \ 'coc-prettier',
     \ 'coc-phpls',
     \ 'coc-emmet']

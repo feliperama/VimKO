@@ -1,11 +1,19 @@
-# VKO vim configuration
+# Personal vim configuration 
 
-##FELIPE custom
+## Changelog 
   Changed to tab to jump (dont need supertabs)
 ##
 
+## Troubleshoot and workaround
+- If Loose sintax (for exemple for a php file)
+{% codeblock %}
+:set syntax=php
+{% endcodeblock %}
+
+
+
 Advanced VIM Configuration for FullStack Developers, for now it's supporting.
-- Backend: Ruby on Rails, Python and Elixir.
+- Backend: Node, Typescript, Php, Ruby on Rails, Python and Elixir.
 - Front-end: React
 - Ops: Docker, Nginx, Ansible.
 
