@@ -1,3 +1,5 @@
+priority 1
+
 snippet class "typescript class"
 class ${1:`!p snip.rv = snip.basename`} ${2:extends ${3:OtherClass} }{
 	$0
@@ -27,7 +29,38 @@ def down_first_char(word):
 
 def filename_1st_downcase():
 	return down_first_char(snip.basename)
+
+def private_const_part1(props):
+    str = '    private constructor(\n'
+    if props:
+        for prop in props:
+            str += '        private readonly _' + prop + ': string,\n'
+        str += ') {}'
+    return str
+
+def private_const_part2(props):
+    str = ''
+    if props:
+        for prop in props:
+            str += '\n    public get ' + prop + '(): string {\n'
+            str += '        return this._' + prop + ';\n'
+            str += '    }\n'
+    return str
+
+def class_private_const(t):
+    if t:
+        str = 'export class ' + snip.basename + ' {\n'
+        props = [x.strip() for x in t.split(',')]
+        str += private_const_part1(props) + '\n' + private_const_part2(props)
+        str += '}'
+        return str
+    return ':insert properties separeted by comma'
 endglobal
+
+snippet pcla " populate private constructor from array"
+$1
+`!p snip.rv=class_private_const(t[1])`
+endsnippet
 
 snippet	foo ""
 `!p snip.rv = filename_1st_downcase()`

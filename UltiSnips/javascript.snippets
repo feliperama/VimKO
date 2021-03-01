@@ -1,3 +1,5 @@
+priority 1
+
 snippet render
 	render() {
 		return (
@@ -185,8 +187,8 @@ for (let ${1:i} = ${2:0}; $1 < ${3:n}; $1${4:++}) {
 }
 endsnippet
 
-snippet "im(pf|pof|porf|portf)" "import" br
-import { ${2} } from '${1}';
+snippet "im(p|po|por|port)" "import" br
+import { ${1} } from '${2:./$1}';
 endsnippet
 
 # snippet "i(mport|mp|m)?" "import" br
@@ -274,6 +276,19 @@ endsnippet
 # 			${0:<div></div>}
 # 		)
 # 	}
+
+snippet expi "Export Interface" b
+export interface ${1:`!p snip.rv = snip.basename`} {
+    $0
+}
+endsnippet
+
+
+snippet expc "Export class" b
+export class ${1:`!p snip.rv = snip.basename`} extends ${2: ${3:SomeInterface} }{
+    $0
+}
+endsnippet
 
 snippet expa "Export arrow function" b
 export const ${1:default} = (${2:args}) => ${3:{$0}};
