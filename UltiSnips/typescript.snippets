@@ -1,17 +1,21 @@
-priority 1
+priority 2
 
-snippet class "typescript class"
-class ${1:`!p snip.rv = snip.basename`} ${2:extends ${3:OtherClass} }{
-	$0
-}
+# snippet class "typescript class"
+# classzz ${1:`!p snip.rv = snip.basename`} ${2:extends ${3:OtherClass} }{
+# 	$0
+# }
+# endsnippet
+
+snippet ct "class constructor"
+constructor(${1:params}) {$0}
 endsnippet
+
 
 snippet type "typescript type"
 type $1 = {
     $0
 };
 endsnippet
-
 
 snippet expt "" b
 export type $1 = {
