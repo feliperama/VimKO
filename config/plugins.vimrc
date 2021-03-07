@@ -4,7 +4,8 @@ call plug#begin()
 " General
 " -----------------------------------------------------------------------------
   " Insert and delete brakets, parens, quotes.
-  " Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs'
+    " bugs try https://github.com/jiangmiao/auto-pairs/pull/291
 
   " granular project configuration using projections
   Plug 'tpope/vim-projectionist'
@@ -144,7 +145,8 @@ call plug#begin()
     \ 'coc-eslint',
     \ 'coc-prettier',
     \ 'coc-phpls',
-    \ 'coc-emmet']
+    \ 'coc-emmet',
+    \ 'coc-groovy']
     " \ 'coc-java']
 
   Plug 'SirVer/ultisnips'
@@ -348,7 +350,6 @@ call plug#begin()
   " sudo tee not working on neovim
   Plug 'lambdalisue/suda.vim'
 
-  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 
