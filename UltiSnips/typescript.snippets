@@ -10,6 +10,11 @@ snippet ct "class constructor"
 constructor(${1:params}) {$0}
 endsnippet
 
+snippet pct "class constructor"
+private constructor(private${1: readonly} ${2:arg1}) {$0}
+
+public static create(): `!p snip.rv = snip.basename` {}
+endsnippet
 
 snippet type "typescript type"
 type $1 = {
