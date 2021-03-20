@@ -10,14 +10,14 @@
 
 
  " FLOAT BUFFER 
-let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --glob "!/tmp/*" --glob "!/plugged/*" --glob "!**/*.beam" --glob "!/deps/*" --glob "!.serverless/*" --glob "!.webpack/*" --glob "!coverage/*" --glob "!/vendor/*" --glob "!tags"'
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --glob "!/tmp/*" --glob "!/plugged/*" --glob "!**/*.beam" --glob "!/deps/*" --glob "!.serverless/*" --glob "!.webpack/*" --glob "!coverage/*" --glob "!/vendor/*" --glob "!tags" --glob "!.build/*"'
 
 "old one
 " command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 " from internet
  " command! -bang -nargs=* Find call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " " Mix: It's considering git ignore
-command! -bang -nargs=* Find call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "!.build/*" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* FindCode call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "!**/tests/**" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* FindTest call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "tests/**" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* FindWithGitignore call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)

@@ -15,6 +15,12 @@
 - Search where the first word is to be used to exclude dir? is that really
   usefull? maybe a list ignore stuff and process it e.g: ".php,.html,build/**"
 
+- Feature: snippets
+ * snippet for import inside test cases should already put by default the
+   correct number of ../../../ (probably using some python for it)
+
 
   HTW this is not working colors:
 src/gateway/managers/orders/OrderManager.php
+
+

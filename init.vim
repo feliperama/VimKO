@@ -100,7 +100,7 @@ set norelativenumber
 " autocmd InsertLeave * :set relativenumber
 
 " Groovy syntax highlighting for Jenkinsfiles
-au BufNewFile,BufRead Jenkinsfile set filetype=groovy
+" au BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
 " Treat words with dash as a word
 set iskeyword+=-

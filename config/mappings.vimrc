@@ -33,9 +33,6 @@
 " -----------------------------------------------------------------------------
 " Miscellaneous
 " -----------------------------------------------------------------------------
-  " Remove lines with a specify patter
-  " TODO make this work with fzf
-  nnoremap <leader>rp :g//d<left><left>
 
   " Break line eficiently
   " ref: https://stackoverflow.com/questions/18057421/vim-cursor-position-after-expanding-html-tag
@@ -85,7 +82,7 @@
   " nnoremap <leader>e =ae<C-o>
 
   " Indent paragraph
-  nnoremap <leader>a =ip
+  " nnoremap <leader>a =ip
 
   " Remove empty spaces
   nnoremap <leader>, :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR><C-o>
@@ -318,8 +315,9 @@
   " Delete current file
   nnoremap [Files]de :!rm %
 
-  " Move/Rename current file
-  nnoremap [Files]m :!mv <C-r>=expand('%')<cr> <C-r>=expand('%')<cr>
+  " Move/Rename current file: with coc it will trigger refactors!
+  " nnoremap [Files]m :!mv <C-r>=expand('%')<cr> <C-r>=expand('%')<cr>
+  nnoremap [Files]m :CocCommand workspace.renameCurrentFile<cr>
 
   " Copy Relative path
   nnoremap <silent> [Files]y :let @+=join([expand("%"), line('.')], ':')<CR>:echo 'Relative path copied to clipboard.'<CR>
@@ -499,7 +497,7 @@
       VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . relative_path)
     elseif( match(a:file_name_full_path, '**.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
-      VimuxRunCommand("NODE_ENV=dev mocha --require ts-node/register --full-trace --bail " . relative_path)
+      VimuxRunCommand("NODE_ENV=dev ./node_modules/mocha/bin/mocha --require ts-node/register --full-trace --bail " . relative_path)
     elseif(match(a:file_name_full_path, '_spec.rb') != -1)
       VimuxRunCommand("clear; bundle exec rspec " . a:file_name_full_path . " --fail-fast -fd")
     elseif(match(a:file_name_full_path, '.feature') != -1)
@@ -591,5 +589,37 @@ xnoremap <Leader>jo :s/["']\([a-zA-Z0-9_]\+\)["']\s*:\(.*\)/\1:\2/g<CR>
 " TODO make a script to apply multiple operations at once 
 " Map to select everything before a symbol --> https://stackoverflow.com/questions/26853667/using-variable-in-vim-key-mappings
 
+" -----------------------------------------------------------------------------
+" Formating
+" -----------------------------------------------------------------------------
 nnoremap <leader>fj :%!python -m json.tool<cr>
 xnoremap <leader>fj :!python -m json.tool<cr>
+" format the select text. Uses plugins depending on file type
+vmap <leader>f <Plug>(coc-format-selected)
+" format all file. Uses plugins depending on file type
+nnoremap <leader>f <Plug>(coc-format)
+
+" Remove lines with a specify patter
+" TODO make this work with fzf
+
+" nnoremap <leader>rp :g//d<left><left>
+
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <plug>(coc-codeaction-selected)
+
+xmap <leader>r <plug>(coc-refactor)
+nmap <leader>r <plug>(coc-refactor)
+
+" TODO fixme bellow not working try copy paste command
+nnoremap <leader>md :!grip @+=expand("%:p") 6420 && xdg-open http://localhost:6420/<CR> 
+
+
+" TODO: use this for rename instead of just move. Also fix the move, is really
+" " shit right now
+" CocCommand workspace.renameCurrentFile
+" Check https://github.com/Microsoft/TypeScript/blob/master/lib/protocol.d.ts#L5
+"  to see things provided by tsserver. coc seens to be using it. Just search
+"  on coc-tsserver some of the commands provided to see.
+"
+" GocAction('gethover') doesnt work to copy coc-eslint errors, maybe I need to
+" have selected the text but this is a problem...
