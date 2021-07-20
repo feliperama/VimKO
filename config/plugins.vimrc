@@ -345,9 +345,14 @@ call plug#begin()
   "   let g:vimspector_enable_mappings = 'HUMAN'
 
 " -----------------------------------------------------------------------------
+" Markdown (.md files) 
+" -----------------------------------------------------------------------------
+  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+
+" -----------------------------------------------------------------------------
 " FIXES/Temporary
 " -----------------------------------------------------------------------------
-  " sudo tee not working on neovim
+  " Plugin to save as sudo. ':sudo tee %' is not working on neovim
   Plug 'lambdalisue/suda.vim'
 
 call plug#end()

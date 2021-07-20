@@ -9,6 +9,10 @@ def filter_classname_from_path(path):
         return ''
 endglobal
 
+snippet cdir "console dir no array limit"
+console.dir($0, {'maxArrayLength': null});
+endsnippet
+
 snippet render
 	render() {
 		return (
@@ -32,8 +36,8 @@ ${1:functionName}() {
 }
 endsnippet
 
-snippet fuck "description"
-console.log('@@@@@ $0');
+snippet loga "description"
+console.log(\`@@@@ ${ $0 }\`);
 endsnippet
 
 # snippet "then" "then" riA

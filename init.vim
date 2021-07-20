@@ -40,23 +40,12 @@ set sidescrolloff=5     " Keep at least 5 lines left/right
 set display=lastline
 set cursorline
 
-" Javascript Pretifier configuration
-autocmd FileType javascript set formatprg=prettier\ --stdin
-
-autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType typescript setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
-autocmd FileType snippets setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType php setlocal iskeyword-=-
-autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
-
 " Tabs and Indents
 set textwidth=80  " Text width maximum chars before wrapping
 set expandtab     " Don't expand tabs to spaces.
-set tabstop=2     " The number of spaces a tab is
-set softtabstop=2 " While performing editing operations
-set shiftwidth=2  " Number of spaces to use in auto(indent)
+set tabstop=4     " The number of spaces a tab is
+set softtabstop=4 " While performing editing operations
+set shiftwidth=4  " Number of spaces to use in auto(indent)
 set smarttab      " Tab insert blanks according to 'shiftwidth'
 set autoindent    " Use same indenting on new lines
 set smartindent   " Smart autoindenting on new lines
@@ -86,6 +75,16 @@ set showmatch       " Jump to matching bracket
 set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren
 set cpoptions-=m    " showmatch will wait 0.5s or until a char is typed
+
+" Javascript Pretifier configuration
+autocmd FileType javascript set formatprg=prettier\ --stdin
+
+autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
+autocmd FileType php setlocal iskeyword-=-
+autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType text setlocal textwidth=0
+autocmd FileType markdown setlocal textwidth=0
 
 " AutoClose for vim erb
 let g:AutoClosePairs = { '#{': '}'}
