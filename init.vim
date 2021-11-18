@@ -86,6 +86,9 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType text setlocal textwidth=0
 autocmd FileType markdown setlocal textwidth=0
 
+" set json for .monitoring files. It's for fullname, otherwise would be *.monitoring
+autocmd BufNewFile,BufRead .monitoring set syntax=json
+
 " AutoClose for vim erb
 let g:AutoClosePairs = { '#{': '}'}
 let g:AutoCloseProtectedRegions = ["Character"]

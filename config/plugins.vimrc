@@ -53,7 +53,7 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
 
   " Find and Replace
-  Plug 'brooth/far.vim',{  'on': ['Far',  'Farp',  'F'] }
+  Plug 'brooth/far.vim',{  'on': ['Far',  'Farp',  'F', 'Farr', 'Farf'] }
     let g:far#source = 'rg'
   Plug 'jremmen/vim-ripgrep'
 
@@ -105,8 +105,8 @@ call plug#begin()
 " -----------------------------------------------------------------------------
 " Sidebar
 " -----------------------------------------------------------------------------
-  set encoding=UTF-8
-  Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+  Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+  Plug 'Xuyuanp/nerdtree-git-plugin',{  'on': ['NERDTreeToggle', 'NERDTreeFind'] }
   " FIXME: devicons. Note that nerd-fonts was not in the original one 
   " Plug 'ryanoasis/nerd-fonts' --> not sure how to use. People said to use
   " install.sh to install. Not sure if is a plugin or a SO stuff
@@ -146,7 +146,8 @@ call plug#begin()
     \ 'coc-prettier',
     \ 'coc-phpls',
     \ 'coc-emmet',
-    \ 'coc-groovy']
+    \ 'coc-groovy',
+    \ 'coc-lists']
     " \ 'coc-java']
 
   Plug 'SirVer/ultisnips'
@@ -227,7 +228,6 @@ call plug#begin()
 " -----------------------------------------------------------------------------
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
-  Plug 'Xuyuanp/nerdtree-git-plugin',{  'on': ['NERDTreeToggle', 'NERDTreeFind'] }
   Plug 'jreybert/vimagit'
 
 " -----------------------------------------------------------------------------

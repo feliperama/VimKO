@@ -117,6 +117,7 @@
   " Recording 
   nnoremap <leader>q q
 
+  " FIXME: When typescript project, it should use coc-lists somehow. :CocList outline
   " Toggle Tagbar
   nnoremap <leader>; :TagbarToggle<CR>
 
@@ -138,7 +139,8 @@
   " cmap w!! w !sudo tee % >/dev/null
   cmap w!! SudaWrite
 
-  cmap AC :call CreateAlternateFile()<CR>
+  " FIXME in this way when I digit anything with AC in the cmd triggers...e.g: :Far PLACE_...
+  " cmap AC :call CreateAlternateFile()<CR>
 
   function! CreateAlternateFile()
     let alternate_file = projectionist#query_file('alternate')[0]
@@ -337,6 +339,7 @@
 " FuzzyFinder
 " -----------------------------------------------------------------------------
   nnoremap <silent> [FuzzyFinder]f :Files<cr>
+  nnoremap <silent> [FuzzyFinder]b :Buffers<cr>
   nnoremap <silent> [FuzzyFinder]mo :Files <cr> app/models/
   nnoremap <silent> [FuzzyFinder]rs :Files <cr> spec/_spec.rb<left><left><left><left><left><left><left><left>
   nnoremap <silent> [FuzzyFinder]c :Files <cr> app/controllers/
