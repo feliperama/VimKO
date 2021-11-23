@@ -468,13 +468,13 @@
   " nnoremap [Terminal]pt :below new \| resize 10 \| terminal topcli pr list team<CR>
   " nnoremap [Terminal]s :below new \| resize 10 \| terminal bin/setup
   nnoremap [Terminal]t :call RunTestsOnLeftPane(expand('%:p')) <CR> :echo g:VimuxLastCommand<CR>
+  " Run just the test over the current line, works just with ruby.
   nnoremap [Terminal]T :call RunTestsOnLeftPane(join([expand('%:p'), line('.')], ':'))<CR> :echo g:VimuxLastCommand<CR>
+  " Run the last shell command
+  nnoremap <silent><leader>l :!!<CR>
 
   " Prompt for a command to run
   nnoremap [Terminal]! :VimuxPromptCommand<CR>
-
-  " Run the last shell command
-  nnoremap <silent><leader>l :!!<CR>
 
   " Run last command executed by VimuxRunCommand
   nnoremap [Terminal]l :VimuxRunLastCommand<CR> :echo g:VimuxLastCommand<CR>
