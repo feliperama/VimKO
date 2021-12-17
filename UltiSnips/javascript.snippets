@@ -10,7 +10,7 @@ def filter_classname_from_path(path):
 endglobal
 
 snippet cdir "console dir no array limit"
-console.dir($0, {'maxArrayLength': null});
+console.dir($0, { maxArrayLength: null });
 endsnippet
 
 snippet render
@@ -38,6 +38,10 @@ endsnippet
 
 snippet loga "description"
 console.log(\`@@@ ${$0}\`);
+endsnippet
+
+snippet logo "description"
+console.log(\`@@@ ${0:$1}: ${JSON.stringify(${1:obj}, null, 2)}\`);
 endsnippet
 
 # snippet "then" "then" riA
@@ -378,6 +382,19 @@ endsnippet
 snippet cn "className"
 className='$1'
 endsnippet
+
+snippet js "JSON.stringify" w 
+JSON.stringify(${0})
+endsnippet
+
+
+# tests 
+snippet it "it clause"
+it('${1:should ...}', ${2:async }() => {
+	$0
+});
+endsnippet
+
 
 
 ### LESS priority, second option

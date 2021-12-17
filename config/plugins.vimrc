@@ -57,6 +57,9 @@ call plug#begin()
     let g:far#source = 'rg'
   Plug 'jremmen/vim-ripgrep'
 
+  " Conversion to snake camel and other stuff
+  Plug 'tpope/vim-abolish'
+
   " Allow repeat to work with plugins
   Plug 'tpope/vim-repeat'
 

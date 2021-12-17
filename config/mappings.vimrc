@@ -172,6 +172,9 @@
   nnoremap <Leader>ck :-t.<left><left>
   nnoremap <Leader>cj :+t.<left><left>
 
+  " Copy the error msg: DOES NOT WORK
+  nnoremap <Leader>cm :call CocAction('getHover')
+
   " Macro
   nnoremap Q q
   nnoremap M @q
