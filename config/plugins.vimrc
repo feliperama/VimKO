@@ -153,6 +153,10 @@ call plug#begin()
     \ 'coc-lists']
     " \ 'coc-java']
 
+   " intelephense: if got lost for some reason, just do > sudo npm i intelephense@latest -g
+   "   - more info: https://www.npmjs.com/package/intelephense
+
+
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsEditSplit="vertical"
     " let g:UltiSnipsExpandTrigger="<C-l>"
