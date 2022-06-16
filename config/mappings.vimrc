@@ -508,7 +508,7 @@
       VimuxRunCommand("NODE_ENV=dev ./node_modules/mocha/bin/mocha --require ts-node/register --full-trace --bail " . relative_path)
     elseif( match(a:file_name_full_path, '**.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
-      VimuxRunCommand("NODE_ENV=test ./node_modules/mocha/bin/mocha --require ts-node/register --full-trace --bail " . relative_path)
+      VimuxRunCommand("NODE_ENV=test AMBASSADOR_ACCESS_TOKEN=n/a LAUNCH_DARKLY_SDK_KEY=n/a ./node_modules/mocha/bin/mocha --file tests/unit/index.ts ./node_modules/mocha/bin/mocha --require ts-node/register --full-trace --bail " . relative_path)
     elseif(match(a:file_name_full_path, '_spec.rb') != -1)
       VimuxRunCommand("clear; bundle exec rspec " . a:file_name_full_path . " --fail-fast -fd")
     elseif(match(a:file_name_full_path, '.feature') != -1)
