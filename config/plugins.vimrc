@@ -54,7 +54,7 @@ call plug#begin()
 
   " Find and Replace
   Plug 'brooth/far.vim',{  'on': ['Far',  'Farp',  'F', 'Farr', 'Farf'] }
-    let g:far#source = 'rg'
+    let g:far#source = 'rgnvim'
   Plug 'jremmen/vim-ripgrep'
 
   " Conversion to snake camel and other stuff
