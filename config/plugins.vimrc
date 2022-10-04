@@ -150,7 +150,8 @@ call plug#begin()
     \ 'coc-phpls',
     \ 'coc-emmet',
     \ 'coc-groovy',
-    \ 'coc-lists']
+    \ 'coc-lists',
+    \ 'coc-yaml']
     " \ 'coc-java']
 
    " intelephense: if got lost for some reason, just do > sudo npm i intelephense@latest -g
