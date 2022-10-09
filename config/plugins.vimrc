@@ -133,8 +133,17 @@ call plug#begin()
 " -----------------------------------------------------------------------------
 " Autocomplete and Snippets
 " -----------------------------------------------------------------------------
+  Plug 'SirVer/ultisnips'
+    let g:UltiSnipsEditSplit="vertical"
+    " let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsExpandTrigger="<none>"
+    " let g:UltiSnipsJumpForwardTrigger="<c-n>"
+    " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    " BUG: the line below make ultisnips dont look for UltiSnips type on plugins
+    " and load just old snipmate (snipmate) directory
+    " let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/config/mysnippets"]
+
   "Coc from master branch 
-  " FIXME https://www.reddit.com/r/neovim/comments/ejpr2p/do_you_work_with_coc_together_with_vimtex_or/
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
     \ 'coc-ultisnips',
@@ -154,22 +163,9 @@ call plug#begin()
     \ 'coc-yaml']
     " \ 'coc-java']
 
-   " intelephense: if got lost for some reason, just do > sudo npm i intelephense@latest -g
+    " intelephense: if got lost for some reason, just do > sudo npm i intelephense@latest -g
    "   - more info: https://www.npmjs.com/package/intelephense
 
-
-  Plug 'SirVer/ultisnips'
-    let g:UltiSnipsEditSplit="vertical"
-    " let g:UltiSnipsExpandTrigger="<C-l>"
-    " let g:UltiSnipsJumpForwardTrigger="<c-n>"
-    " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-    let g:UltiSnipsExpandTrigger="<tab>"
-    " let g:UltiSnipsJumpForwardTrigger="<c-l>"
-    " let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-    " BUG: the line below make ultisnips dont look for UltiSnips type on plugins
-    " and load just old snipmate (snipmate) directory
-    " let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/config/mysnippets"]
-  
     " FIXME replace to use coc-emmet -> dont work well with coc-ttserver
     " because of the filetype javascriptreact
   Plug 'mattn/emmet-vim'
@@ -179,8 +175,6 @@ call plug#begin()
     " OU para emmet-vim
     "javascript.jsx because of emmet-vim ... NEED to change to use just coc-emmet
     " au BufNewFile,BufRead *.jsx setlocal ft=html ft=javascript ft=javascript.jsx
-    "mapping will make coc-emmet trigger without completion. DOESNT work well
-    inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
 
 
   Plug 'honza/vim-snippets'

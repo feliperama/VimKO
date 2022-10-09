@@ -37,7 +37,9 @@
   " Break line eficiently
   " ref: https://stackoverflow.com/questions/18057421/vim-cursor-position-after-expanding-html-tag
   " inoremap <leader><CR> <CR><C-o>==<C-o>O
-  inoremap <C-n> <CR><C-o>==<C-o>O
+ " FIXME PROBLEMA: isso ta fazendo C-n nao funcionar no coc para descer na lista.
+ " inoremap <C-n> <CR><C-o>==<C-o>O
+
 
   " Reload command
   command! Reload :so ~/.config/nvim/init.vim
@@ -387,7 +389,7 @@
   nnoremap <leader>es :UltiSnipsEdit<cr>
 
 " -----------------------------------------------------------------------------
-" COC and Gotos
+" COC: gotos and autocompletion
 " -----------------------------------------------------------------------------
   " Remap keys for gotos
   nmap <silent> gd <Plug>(coc-definition)
@@ -397,56 +399,17 @@
 
   nnoremap <silent> [FuzzyFinder]me :CocList outline<cr>
 
-" TODO: delete this gd, it's crap and make coc become crazy dont know why 
-" " map gd to coc definition WITH callback para ctags
-" function! s:GoToDefinition()
-"   if CocAction('jumpDefinition') " CocActionAsync don't return true!!! doesnt work
-"     return v:true
-"   endif
+  " Always show the signcolumn, otherwise it would shift the text each time
+  " diagnostics appear/become resolved.
+  set signcolumn=yes
 
-"   let ret = execute("silent! normal \<C-]>")
-"   if ret =~ "Error" || ret =~ "错误"
-"     call searchdecl(expand('<cword>'))
-"   endif
-" endfunction
+  " uses both enter and tab to autocompletion, while enter will be formated (good for html tags )
+  inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 
-" nmap <silent> gd :call <SID>GoToDefinition()<CR>
-
-
-""BACKUP"
-  " Mapping coc to use c-j and c-k, like vim to go though the list
-  " CAREFUL: disable c-l on emmet for this
-  " inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-  " inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-  """""" DOES NOT WORKD .... BEGIN
-  " BUG WITH VIM ENDSWISE
-  " mappign enter to select/confirm the snippet
-  " if exists('*complete_info')
-  "   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-  " else
-  "   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  " endif
-
-  "" jump with tab between autocompletion -> NONE WORKED
-  "" TRY HARD!
-  "if exists('*complete_info')
-  "  inoremap <expr> <tab> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<TAB>"
-  "else
-  "  imap <expr> <tab> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
-  "endif
-  ""TRY HARD2 from coc 
-  "" use <tab> for trigger completion and navigate to the next complete item
-  "function! s:check_back_space() abort
-  "  let col = col('.') - 1
-  "  return !col || getline('.')[col - 1]  =~ '\s'
-  "endfunction
-
-  "inoremap <silent><expr> <Tab>
-  "      \ pumvisible() ? "\<C-n>" :
-  "      \ <SID>check_back_space() ? "\<Tab>" :
-  "      \ coc#refresh()
-  """""" DOES NOT WORKD .... END
+  "mapping will make coc-emmet trigger without completion. DOESNT work well
+  inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
 
 " -----------------------------------------------------------------------------
 " Tabularize
@@ -634,3 +597,5 @@ nnoremap <leader>md :!grip @+=expand("%:p") 6420 && xdg-open http://localhost:64
 "
 " GocAction('gethover') doesnt work to copy coc-eslint errors, maybe I need to
 " have selected the text but this is a problem...
+"
+
