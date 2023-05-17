@@ -11,7 +11,7 @@
 
  " FLOAT BUFFER 
  " I removed  --glob !tags to because some of directories are actually tags in the name
-let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --glob "!/tmp/*" --glob "!/plugged/*" --glob "!**/*.beam" --glob "!/deps/*" --glob "!.serverless/*" --glob "!.webpack/*" --glob "!.esbuild/*" --glob "!**/coverage/*" --glob "!/vendor/*" --glob "!.build/*" --glob "!dist/*"'
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --glob "!/tmp/*" --glob "!/plugged/*" --glob "!**/*.beam" --glob "!/deps/*" --glob "!.serverless/*" --glob "!.webpack/*" --glob "!.esbuild/*" --glob "!**/coverage/*" --glob "!/vendor/*" --glob "!.build/*" --glob "!dist/*" --glob "!build/*"'
 
 "old one
 " command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!**/node_modules/*" --glob "!*.png" --color "always" '.shellescape(<q-args>), 1, <bang>0)

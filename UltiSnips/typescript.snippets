@@ -6,8 +6,18 @@ priority 2
 # }
 # endsnippet
 
+snippet sleep "one line typscript snippet"
+await new Promise((f) => setTimeout(f, ${0:1000}));
+endsnippet
+
 snippet ct "class constructor"
 constructor(${1:params}) {$0}
+endsnippet
+
+snippet pfun "private function"
+private${1: asyn} ${2:myFunction}(${3:params}):${4:returns} {
+    $0
+}
 endsnippet
 
 snippet pct "class constructor"
