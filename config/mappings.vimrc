@@ -154,9 +154,6 @@
   nnoremap <Leader>d :t.<cr>
   vnoremap <Leader>d :co-1<cr>
 
-  " Line comment without move the cursor
-  " TODO
-
   " Line cut/past without move the cursor
   nnoremap <Leader>xk :call CutAndPasteByLineNumber('-')<left><left>
   nnoremap <Leader>xj :call CutAndPasteByLineNumber('+')<left><left>
@@ -351,7 +348,6 @@
   nnoremap <silent> [FuzzyFinder]g :Find<cr>
   nnoremap <silent> [FuzzyFinder]t :Tags <cr>
   nnoremap <silent> [FuzzyFinder]T :BTags <cr>
-  " TODO use G for find using gitignore
   nnoremap <silent> [FuzzyFinder]G :FindCode <cr>
   nnoremap <silent> [FuzzyFinder]Gt :FindTest <cr>
   nnoremap <silent> [FuzzyFinder]Gc :BCommits <cr>
@@ -469,6 +465,9 @@
     elseif( match(a:file_name_full_path, 'dm-customerorder\/order-management\/shared.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
+    elseif( match(a:file_name_full_path, 'dm-customerorder\/order-management\/fulfillment.*.test.ts') != -1)
+      let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
+      VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
     elseif( match(a:file_name_full_path, 'tests/.*Test.php') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("d.c exec hq-central php -d xdebug.profiler_enable=0 vendor/be/bin/phpunit --configuration=tests/phpunit.xml --stop-on-failure " . relative_path)
@@ -505,37 +504,6 @@
 
   nnoremap <leader>jsd <Plug>(jsdoc)
 
-  function! JumpToAlternateWithTestPrefix(prefix) 
-    let filename = expand('%')
-    let extension = expand('%:e')
-    let alternate
-
-    echo '@@@ ' . filename . extension
-
-    " if(match(filename, '.*test.' . extension))
-    "   test_prefix_size = strlen('tests/' . prefix .'/')
-    "   tail_size = -1 * strlen('test.' . extension) - 1
-    "   alternate = 'src/' . filename[test_prefix_size:tail_size] . extension
-    " elseif(filename[0:2] ==# 'src')
-    "   src_prefix_size = strlen('src/')
-    "   tail_size = -1 * strlen(extension) - 1
-    "   alternate = 'tests/' . filename[src_prefix_size:tail_size] . 'tests.' . extension
-    " endif 
-
-    " if strlen(alternate) == 0
-    "   echohl WarningMsg | echo "Alternate file not found!" | echohl None 
-    " elseif filereadable(alternate)
-    "   exec ':e ' . alternate
-    " else
-    "   " TODO: option to create te file, creating inclusive the filepath
-   " endif
-      
-  endfunction
-
-  " command A already solved with vim projections!
-  " command A call JumpToAlternateWithTestPrefix('unit')
-  " command! Af call JumpToAlternateWithTestPrefix('functional')
-
 " -----------------------------------------------------------------------------
 " Elixir
 " -----------------------------------------------------------------------------
@@ -566,8 +534,6 @@ xnoremap <Leader>= :s/\([^=]\+\)=\s*\(.*\)[;]/\1= \2;/g<LEFT><LEFT><LEFT><LEFT><
 " xnoremap <Leader>j :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)//g<LEFT><LEFT>
 xnoremap <Leader>jj :s/\([a-zA-Z0-9_]\+\)\s*:\(.*\)/"\1":\2/g<CR>
 xnoremap <Leader>jo :s/["']\([a-zA-Z0-9_]\+\)["']\s*:\(.*\)/\1:\2/g<CR>
-" TODO make a script to apply multiple operations at once 
-" Map to select everything before a symbol --> https://stackoverflow.com/questions/26853667/using-variable-in-vim-key-mappings
 
 " -----------------------------------------------------------------------------
 " Formating
@@ -578,11 +544,6 @@ xnoremap <leader>fj :!python -m json.tool<cr>
 vmap <leader>f <Plug>(coc-format-selected)
 " format all file. Uses plugins depending on file type
 nnoremap <leader>f <Plug>(coc-format)
-
-" Remove lines with a specify patter
-" TODO make this work with fzf
-
-" nnoremap <leader>rp :g//d<left><left>
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <plug>(coc-codeaction-selected)

@@ -20,7 +20,7 @@ let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git
 " " Mix: It's considering git ignore
 command! -bang -nargs=* Find call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "!.build/*" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* FindCode call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "!**/tests/**" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-command! -bang -nargs=* FindTest call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "tests/**" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* FindTest call fzf#vim#grep('rg --no-ignore-parent --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden --glob "!.git/*" --glob "!package-lock.json" --glob "!tests/coverage" --glob "tests/**" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* FindWithGitignore call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --fixed-strings --hidden '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " command! -bang -nargs=? -complete=dir Files
