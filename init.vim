@@ -81,6 +81,8 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 
 autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 autocmd FileType php setlocal iskeyword-=-
+" Some php files has really slow redraw time due coc.nvim
+set redrawtime=5000
 autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType jsonc setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2

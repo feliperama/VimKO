@@ -172,7 +172,7 @@
   nnoremap <Leader>cj :+t.<left><left>
 
   " Copy the error msg: DOES NOT WORK
-  nnoremap <Leader>cm :call CocAction('getHover')
+  nnoremap <Leader>ccc :call CocAction('getHover')
 
   " Macro
   nnoremap Q q
@@ -469,6 +469,9 @@
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
     elseif( match(a:file_name_full_path, 'dm-customerorder\/order-management\/pps.*.test.ts') != -1)
+      let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
+      VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
+    elseif( match(a:file_name_full_path, 'dm-customerorder\/order-management\/ors.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
     elseif( match(a:file_name_full_path, 'dm-customerorder\/refund-calculation.*.test.ts') != -1)
