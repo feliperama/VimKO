@@ -14,6 +14,8 @@ set spelllang=en
 
 " set tags=./.tags
 
+" more memory which allows deals with larger files color syntax (default=1000)
+set maxmempattern=3000
 
 " Behavior
 set number
@@ -86,11 +88,16 @@ set redrawtime=5000
 autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType jsonc setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType text setlocal textwidth=0
 autocmd FileType markdown setlocal textwidth=0
 
+
 " set json for .monitoring files. It's for fullname, otherwise would be *.monitoring
 autocmd BufNewFile,BufRead .monitoring set syntax=json
+
+" set also typescript type to a tsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact.typescript
 
 " AutoClose for vim erb
 let g:AutoClosePairs = { '#{': '}'}
