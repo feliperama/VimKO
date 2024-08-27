@@ -8,11 +8,13 @@
         "storagePath": "/tmp/intelephense"
       }
     },
-    "golang": {
+    "go": {
       "command": "gopls",
-      "args": [],
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   },
   "suggest.enablePreselect": false,

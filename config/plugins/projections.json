@@ -25,6 +25,14 @@
     "alternate" : "order-management/legal-entity/src/{}.ts",
     "type": "tests"
   },
+  "src/*.tsx" : {
+    "alternate": "tests/{}.test.tsx",
+    "type": "source"
+  },
+  "tests/*.test.tsx" : {
+    "alternate": "src/{}.tsx",
+    "type": "tests"
+  },
   "src/*.ts" : {
     "alternate": "tests/unit/{}.test.ts",
     "type": "source"

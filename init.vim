@@ -15,7 +15,7 @@ set spelllang=en
 " set tags=./.tags
 
 " more memory which allows deals with larger files color syntax (default=1000)
-set maxmempattern=3000
+set maxmempattern=5000
 
 " Behavior
 set number
