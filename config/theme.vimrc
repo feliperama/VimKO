@@ -6,13 +6,13 @@ func! s:setCustomColors()
   call one#highlight('TabLine',      '676a70',  '47474c',  'none')
   call one#highlight('TabLineSel',   'FFFFFF',  '303034',  'none')
   call one#highlight('ColorColumn',  '',        '2d2d30',  'none')
+  call one#highlight('WinSeparator',  '000000', '000000',  'none')
 
   " Ruby
   " call one#highlight('rubyFunction', '',        '',        'bold')
 endfunc
 
-" autocmd ColorScheme * call s:setCustomColors()
-"
+ autocmd ColorScheme * call s:setCustomColors()
 
 set termguicolors
 let g:airline_theme='minimalist'

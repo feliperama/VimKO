@@ -14,6 +14,8 @@ set spelllang=en
 
 " set tags=./.tags
 
+set mouse=
+
 " more memory which allows deals with larger files color syntax (default=1000)
 set maxmempattern=5000
 
@@ -72,7 +74,7 @@ set nohlsearch        " Highlight search results
 " noremap ? :set hlsearch<cr>?set wrapscan        " Searches wrap around the end of the file
 " Smaller updatetime for CursorHold & CursorHoldI
 noremap * :set hlsearch<cr>*
-set updatetime=100
+set updatetime=500
 set showmatch       " Jump to matching bracket
 set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren
@@ -92,12 +94,15 @@ autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType text setlocal textwidth=0
 autocmd FileType markdown setlocal textwidth=0
 
+"python, problems with mac
+let g:python3_host_prog = expand("~/.venvs/nvim/bin/python")
 
 " set json for .monitoring files. It's for fullname, otherwise would be *.monitoring
 autocmd BufNewFile,BufRead .monitoring set syntax=json
 
 " set also typescript type to a tsx
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact.typescript
+autocmd BufNewFile,BufRead *.config set filetype=config
 
 " AutoClose for vim erb
 let g:AutoClosePairs = { '#{': '}'}

@@ -37,7 +37,7 @@ call plug#begin()
   " Send commands to other tmux tabs from vim
   Plug 'benmills/vimux'
     let g:VimuxOrientation = "h"
-    let g:VimuxHeight = "31"
+    let g:VimuxHeight = "105"
     let g:VimuxPromptString = "> "
 
   " Highligh cursor word
