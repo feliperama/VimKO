@@ -168,11 +168,36 @@
   endfunction
 
   " Line copy without move the cursor
-  nnoremap <Leader>ck :-t.<left><left>
-  nnoremap <Leader>cj :+t.<left><left>
+  " nnoremap <Leader>ck :-t.<left><left>
+  " nnoremap <Leader>cj :+t.<left><left>
 
   " Copy the error msg: DOES NOT WORK
-  nnoremap <Leader>ccc :call CocAction('getHover')
+  " nnoremap <Leader>ccc :call CocAction('getHover')
+
+function! DebugCursorDiagnostics()
+  " Get all diagnostics
+  let l:diagnostics = CocAction('diagnosticList')
+  if empty(l:diagnostics)
+    echo "No diagnostics available."
+    return
+  endif
+
+  " Get current cursor position
+  let l:line = line('.')
+  let l:col = col('.')
+
+  " Log diagnostics for debugging
+  echo "Cursor Position: Line " . l:line . ", Column " . l:col
+  let l:relevant_diags = filter(copy(l:diagnostics), 'v:val.lnum == l:line')
+  echo "Diagnostics for this line: " . string(l:relevant_diags)
+
+  " Loop through diagnostics
+  for l:diag in l:relevant_diags
+    echo "Diagnostic Entry: " . string(l:diag)
+  endfor
+endfunction
+
+nnoremap <silent> <leader>d :call DebugCursorDiagnostics()<CR>
 
   " Macro
   nnoremap Q q
@@ -477,6 +502,9 @@
     elseif( match(a:file_name_full_path, 'dm-customerorder\/refund-calculation.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest --config jest.config.ts ". relative_path)
+    elseif( match(a:file_name_full_path, 'dm-customerorder\/contexts\/support.*.test.ts') != -1)
+      let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
+      VimuxRunCommand("NODE_ENV=test.unit npx dotenvx run --overload -f .env.test.unit -- mocha --full-trace --bail ". relative_path)
     elseif( match(a:file_name_full_path, 'dm-customercare\/contexts\/ui-oms.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("./node_modules/.bin/jest ". relative_path)
@@ -489,6 +517,7 @@
     elseif( match(a:file_name_full_path, '**.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/mocha --require ts-node/register/transpile-only -r tests/loadenv.ts --full-trace --bail " . relative_path)
+      " VimuxRunCommand("DEBUG=nock.* NODE_ENV=dev ./node_modules/.bin/mocha --require ts-node/register/transpile-only -r tests/loadenv.ts --full-trace --bail " . relative_path)
     elseif( match(a:file_name_full_path, '**.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=test AMBASSADOR_ACCESS_TOKEN=n/a LAUNCH_DARKLY_SDK_KEY=n/a ./node_modules/.bin/mocha --file tests/unit/index.ts ./node_modules/.bin/mocha --require ts-node/register --full-trace --bail " . relative_path)

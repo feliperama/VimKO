@@ -15,8 +15,22 @@
       "initializationOptions": {
         "usePlaceholders": true
       }
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/", "."],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "client": {
+          "snippetSupport": true
+        },
+        "rootUri": "file://${workspaceFolder}"
+      }
     }
   },
   "suggest.enablePreselect": false,
-  "javascript.suggestionActions.enabled": true 
+  "javascript.suggestionActions.enabled": true
 }

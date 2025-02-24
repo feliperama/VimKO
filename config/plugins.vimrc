@@ -157,11 +157,11 @@ call plug#begin()
     \ 'coc-eslint',
     \ 'coc-prettier',
     \ 'coc-phpls',
-    \ 'coc-emmet',
     \ 'coc-groovy',
     \ 'coc-lists',
     \ 'coc-yaml',
     \ 'coc-go']
+    " \ 'coc-emmet',
     " \ 'coc-java']
 
     " intelephense: if got lost for some reason, just do > sudo npm i intelephense@latest -g
