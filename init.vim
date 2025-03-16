@@ -93,6 +93,7 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType text setlocal textwidth=0
 autocmd FileType markdown setlocal textwidth=0
+autocmd FileType c,cpp let b:coc_root_patterns = ['.', '.ccls', 'compile_commands.json', '.git']
 
 "python, problems with mac
 let g:python3_host_prog = expand("~/.venvs/nvim/bin/python")
