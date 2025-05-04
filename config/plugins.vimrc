@@ -330,18 +330,30 @@ call plug#begin()
   Plug 'AndrewRadev/linediff.vim'
 
 " -----------------------------------------------------------------------------
+" Typescript test and debug
+" -----------------------------------------------------------------------------
+" Neotest core and adapters
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/nvim-nio'
+
+Plug 'nvim-neotest/neotest-jest'
+Plug 'marilari88/neotest-vitest'
+" -----------------------------------------------------------------------------
 " PHP and VDEBUG
 " -----------------------------------------------------------------------------
-  Plug 'vim-vdebug/vdebug'
-  " let g:vdebug_options = {'port': '9001'}
-  " let g:vdebug_options = {'debug_file': '/home/felipe/vdebug.log'}
-    let g:vdebug_options = {
-          \ 'port' : 9001,
-          \ 'ide_key' : 'VSCODE',
-          \ 'path_maps': {
-              \ '/www/vhosts/hqm.ssense.com/': '/home/felipe/ssense/workspace/services/hq-central/'
-          \ }
-          \}
+  " Plug 'vim-vdebug/vdebug'
+  " " let g:vdebug_options = {'port': '9001'}
+  " " let g:vdebug_options = {'debug_file': '/home/felipe/vdebug.log'}
+  "   let g:vdebug_options = {
+  "         \ 'port' : 9001,
+  "         \ 'ide_key' : 'VSCODE',
+  "         \ 'path_maps': {
+  "             \ '/www/vhosts/hqm.ssense.com/': '/home/felipe/ssense/workspace/services/hq-central/'
+  "         \ }
+  "         \}
 
 " ALTERNATIVE: vimspector
   " Plug 'puremourning/vimspector'
@@ -360,4 +372,4 @@ call plug#begin()
 
 call plug#end()
 
-
+source $HOME/.config/nvim/config/neotest.vimrc

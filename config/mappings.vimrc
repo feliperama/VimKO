@@ -454,11 +454,21 @@ nnoremap <silent> <leader>d :call DebugCursorDiagnostics()<CR>
   " nnoremap [Terminal]pm :below new \| resize 10 \| terminal topcli pr list<CR>
   " nnoremap [Terminal]pt :below new \| resize 10 \| terminal topcli pr list team<CR>
   " nnoremap [Terminal]s :below new \| resize 10 \| terminal bin/setup
-  nnoremap [Terminal]t :call RunTestsOnLeftPane(expand('%:p')) <CR> :echo g:VimuxLastCommand<CR>
+  " nnoremap [Terminal]t :call RunTestsOnLeftPane(expand('%:p')) <CR> :echo g:VimuxLastCommand<CR>
   " Run just the test over the current line, works just with ruby.
-  nnoremap [Terminal]T :call RunTestsOnLeftPane(join([expand('%:p'), line('.')], ':'))<CR> :echo g:VimuxLastCommand<CR>
+  " nnoremap [Terminal]T :call RunTestsOnLeftPane(join([expand('%:p'), line('.')], ':'))<CR> :echo g:VimuxLastCommand<CR>
   " Run the last shell command
   nnoremap <silent><leader>l :!!<CR>
+
+  " Neotest bindings
+  nnoremap [Terminal]t :lua require("neotest").run.run(vim.fn.expand("%"))<CR>        " Run all tests in file
+  nnoremap [Terminal]T :lua require("neotest").run.run()<CR>                           " Run nearest test
+  nnoremap [Terminal]l :lua require("neotest").run.run_last()<CR>                      " Run last test
+  nnoremap [Terminal]s :lua require("neotest").summary.toggle()<CR>                   " Toggle summary panel
+  nnoremap [Terminal]o :lua require("neotest").output_panel.toggle()<CR>              " Toggle output panel
+  " Show output for the focused test in the summary panel (NOT WORKING)
+  lua require("neotest_helpers")
+  nnoremap [Terminal]p :lua require("neotest_helpers").open_output_for_node_at_cursor()<CR>
 
   " Prompt for a command to run
   nnoremap [Terminal]! :VimuxPromptCommand<CR>
