@@ -341,6 +341,12 @@ Plug 'nvim-neotest/nvim-nio'
 
 Plug 'nvim-neotest/neotest-jest'
 Plug 'marilari88/neotest-vitest'
+
+" DAP Debugger
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'mxsdev/nvim-dap-vscode-js'
 " -----------------------------------------------------------------------------
 " PHP and VDEBUG
 " -----------------------------------------------------------------------------
@@ -373,3 +379,4 @@ Plug 'marilari88/neotest-vitest'
 call plug#end()
 
 source $HOME/.config/nvim/config/neotest.vimrc
+source $HOME/.config/nvim/config/dap.vimrc
