@@ -454,21 +454,54 @@ nnoremap <silent> <leader>d :call DebugCursorDiagnostics()<CR>
   " nnoremap [Terminal]pm :below new \| resize 10 \| terminal topcli pr list<CR>
   " nnoremap [Terminal]pt :below new \| resize 10 \| terminal topcli pr list team<CR>
   " nnoremap [Terminal]s :below new \| resize 10 \| terminal bin/setup
-  " nnoremap [Terminal]t :call RunTestsOnLeftPane(expand('%:p')) <CR> :echo g:VimuxLastCommand<CR>
+  nnoremap [Terminal]t :call RunTestsOnLeftPane(expand('%:p')) <CR> :echo g:VimuxLastCommand<CR>
   " Run just the test over the current line, works just with ruby.
-  " nnoremap [Terminal]T :call RunTestsOnLeftPane(join([expand('%:p'), line('.')], ':'))<CR> :echo g:VimuxLastCommand<CR>
+function! GetTestNameUnderCursor()
+  let lnum = line('.')
+  call writefile(['GetTestNameUnderCursor: lnum = ' . lnum], expand('~/log.log'), 'a')
+  call writefile(['GetTestNameUnderCursor: line count = ' . line('$')], expand('~/log.log'), 'a')
+  let line_text = getline(lnum)
+  call writefile(['GetTestNameUnderCursor: line_text = ' . string(line_text)], expand('~/log.log'), 'a')
+  let chars_and_codes = []
+  for c in split(line_text, '\zs')
+    call add(chars_and_codes, c . ':' . char2nr(c))
+  endfor
+  call writefile(['GetTestNameUnderCursor: chars_and_codes = ' . join(chars_and_codes, ',')], expand('~/log.log'), 'a')
+  " Regex: match it('name', or it(\"name\", or it(''name'', (doubled single quotes)
+  let regex = '\\v^\\s*(it|test)\\s*\\(\\s*((''|\"|\\')(.{-})\\3)'
+  let matchlist = matchlist(line_text, regex)
+  call writefile(['GetTestNameUnderCursor: regex = ' . regex], expand('~/log.log'), 'a')
+  call writefile(['GetTestNameUnderCursor: matchlist = ' . string(matchlist)], expand('~/log.log'), 'a')
+  if len(matchlist) >= 5
+    call writefile(['GetTestNameUnderCursor: returning ' . matchlist[4]], expand('~/log.log'), 'a')
+    return matchlist[4]
+  endif
+  " Fallback: match it('name', or it(\"name\",
+  let regex2 = "\\v^\\s*(it|test)\\s*\\(\\s*(['\"])(([^'\"\\\\]|\\\\.)*)\\2"
+  let matchlist2 = matchlist(line_text, regex2)
+  call writefile(['GetTestNameUnderCursor: regex2 = ' . regex2], expand('~/log.log'), 'a')
+  call writefile(['GetTestNameUnderCursor: matchlist2 = ' . string(matchlist2)], expand('~/log.log'), 'a')
+  if len(matchlist2) >= 5
+    call writefile(['GetTestNameUnderCursor: returning ' . matchlist2[4]], expand('~/log.log'), 'a')
+    return matchlist2[4]
+  endif
+  call writefile(['GetTestNameUnderCursor: returning empty string'], expand('~/log.log'), 'a')
+  return ''
+endfunction
+
+  nnoremap [Terminal]T :call RunTestsOnLeftPane(expand('%:p'), GetTestNameUnderCursor())<CR> :echo g:VimuxLastCommand<CR>
   " Run the last shell command
   nnoremap <silent><leader>l :!!<CR>
 
-  " Neotest bindings
-  nnoremap [Terminal]t :lua require("neotest").run.run(vim.fn.expand("%"))<CR>        " Run all tests in file
-  nnoremap [Terminal]T :lua require("neotest").run.run()<CR>                           " Run nearest test
-  nnoremap [Terminal]l :lua require("neotest").run.run_last()<CR>                      " Run last test
-  nnoremap [Terminal]s :lua require("neotest").summary.toggle()<CR>                   " Toggle summary panel
-  nnoremap [Terminal]o :lua require("neotest").output_panel.toggle()<CR>              " Toggle output panel
-  " Show output for the focused test in the summary panel (NOT WORKING)
-  lua require("neotest_helpers")
-  nnoremap [Terminal]p :lua require("neotest_helpers").open_output_for_node_at_cursor()<CR>
+"  " Neotest bindings
+"  nnoremap [Terminal]t :lua require("neotest").run.run(vim.fn.expand("%"))<CR>        " Run all tests in file
+"  nnoremap [Terminal]T :lua require("neotest").run.run()<CR>                           " Run nearest test
+"  nnoremap [Terminal]l :lua require("neotest").run.run_last()<CR>                      " Run last test
+"  nnoremap [Terminal]s :lua require("neotest").summary.toggle()<CR>                   " Toggle summary panel
+"  nnoremap [Terminal]o :lua require("neotest").output_panel.toggle()<CR>              " Toggle output panel
+"  " Show output for the focused test in the summary panel (NOT WORKING)
+"  lua require("neotest_helpers")
+"  nnoremap [Terminal]p :lua require("neotest_helpers").open_output_for_node_at_cursor()<CR>
 
   " Prompt for a command to run
   nnoremap [Terminal]! :VimuxPromptCommand<CR>
@@ -493,10 +526,20 @@ nnoremap <silent> <leader>d :call DebugCursorDiagnostics()<CR>
     call VimuxSendKeys("Enter")
   endfunction
 
-  function! RunTestsOnLeftPane(file_name_full_path)
+  function! RunTestsOnLeftPane(file_name_full_path, ...)
+    let test_name = a:0 > 0 ? a:1 : ''
     if( match(a:file_name_full_path, 'dm-customerorder\/order-management\/oec.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
-      VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
+      if test_name != ''
+        let test_name_escaped = substitute(test_name, "'", "'\"'\"'", 'g')
+        VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest " . relative_path . " -t '" . test_name_escaped . "'")
+      else
+        VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)
+      endif
+    elseif( match(a:file_name_full_path, 'back-end-code-challenge-emenrk\/service.*.test.ts') != -1)
+      let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
+      " VimuxRunCommand("npm run test --  ". relative_path)
+      VimuxRunCommand("./node_modules/.bin/tsx ./node_modules/.bin/mocha ". relative_path)
     elseif( match(a:file_name_full_path, 'dm-customerorder\/order-management\/shared.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("NODE_ENV=dev ./node_modules/.bin/jest ". relative_path)

@@ -87,6 +87,9 @@ autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=
 autocmd FileType php setlocal iskeyword-=-
 " Some php files has really slow redraw time due coc.nvim
 set redrawtime=5000
+" Treat words with dash as a word
+set iskeyword+=-
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType jsonc setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
@@ -94,6 +97,7 @@ autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType text setlocal textwidth=0
 autocmd FileType markdown setlocal textwidth=0
 autocmd FileType c,cpp let b:coc_root_patterns = ['.', '.ccls', 'compile_commands.json', '.git']
+autocmd FileType c,cpp setlocal iskeyword-=-
 
 "python, problems with mac
 let g:python3_host_prog = expand("~/.venvs/nvim/bin/python")
@@ -120,9 +124,6 @@ set norelativenumber
 " Groovy syntax highlighting for Jenkinsfiles
 " au BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
-" Treat words with dash as a word
-set iskeyword+=-
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4
 
 function! ToggleVerbose()
     if !&verbose

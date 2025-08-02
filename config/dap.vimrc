@@ -1,49 +1,38 @@
 lua << EOF
 local dap = require('dap')
-local dapui = require('dapui')
 
--- Setup the UI
-require("dapui").setup()
-require("nvim-dap-virtual-text").setup()
+dap.adapters["pwa-node"] = {
+  type = "server",
+  host = "localhost",
+  port = "${port}",
+  executable = {
+    command = "node",
+    args = {os.getenv("HOME") .. "/.local/share/nvim/vscode-js-debug/dist/src/vsDebugServer.js", "${port}"},
+  }
+}
 
--- JavaScript/TypeScript adapter (using vscode-js-debug)
-require("dap-vscode-js").setup({
-  node_path = "node",
-  debugger_path = os.getenv("HOME") .. "/.local/share/nvim/vscode-js-debug",
-  adapters = { "pwa-node" },
-})
-
-for _, language in ipairs({"typescript", "javascript", "typescriptreact", "javascriptreact"}) do
-  dap.configurations[language] = {
+-- Idioma: ts, js, tsx, jsx
+for _, lang in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
+  dap.configurations[lang] = {
     {
       type = "pwa-node",
       request = "launch",
-      name = "Launch Current File",
-      program = "${file}",
-      cwd = vim.fn.getcwd(),
-      runtimeExecutable = "node",
-      sourceMaps = true,
-      protocol = "inspector",
-      console = "integratedTerminal",
-    },
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Jest Current File",
-      runtimeExecutable = "node",
+      name = "Debug Jest Test (ts-node)",
+      runtimeExecutable = "npx",
       runtimeArgs = {
-        "./node_modules/jest/bin/jest.js",
-        "${file}",
-        "--runInBand"
+        "ts-node",
+        "./node_modules/jest/bin/jest",
+        "--runInBand",
+        "${file}"  -- roda o arquivo atualmente aberto (útil no test)
       },
-      rootPath = vim.fn.getcwd(),
+      program = "${file}",          -- <- ESSENCIAL para o DAP funcionar corretamente
       cwd = vim.fn.getcwd(),
+      rootPath = vim.fn.getcwd(),
       console = "integratedTerminal",
       internalConsoleOptions = "neverOpen",
     },
   }
 end
 
--- Keybindings
 vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
 EOF

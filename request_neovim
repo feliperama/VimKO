@@ -1,0 +1,67 @@
+I'm a long time neovim user. I want to customise vscode to have a vim like edit mode, so I will have the normal mode, insert mode and visual mode from vim, as also the usual vim binds for it (e.g.: press i to move to insertmode, v to visual mode, cwi to cut a word curso is over, etc). How I can do it? There are anything default to enable it on vscode or does I need a plugin?
+
+Also I want The following features that I have on neovim due plugins and bindinds. Please suggest me how I can have bellow in neovim, suggest me plugins and how to do mappins to have similar behavior:
+
+1)Plugins: For each one, if has a built-in feature, let me know, otherwise, recommend a plugin and let's work on the key bindinds. I will write what I want
+
+easymotion/vim-easymotion
+MattesGroeger/vim-bookmarks --> want a way to bookmark someplace in code and got ther
+tpope/vim-fugitive  --> Want via vim command mode be able to show diffs etc. examples:
+ :Git blame  --> will show open a buffer at left showing the blame
+ :Git xxx -> execute any git command
+ :Gdiff branchName:% --> will do a diff from current file with his version at the branchName. It's not mandatory the :%, if you find a solution without that 
+tpope/vim-projectionist --> want basically alternative to test file, so I want to be able to define what is a alternate unit file per project, and if is not created, it will request to create. 
+t9md/vim-quickhl --> highlight with some color the word under cursor
+
+
+2) Key bindings: Would be nice have a easier way to add keybinds in general, mainly when I'm not on the edit mode. Key bindinds I would to have when in normal mode.
+
+
+leader --> space bar
+;a --> will trigger the projectionist/alternate file like
+  nnoremap  [FuzzyFinder]   <Nop>
+  nmap      ; [FuzzyFinder]
+
+;f --> search for a file (like control-p), a fuzzy finding
+;g --> fuzy search for a pattern in any file of the project
+;G --> fuzy search for a pattern in any file that is not a test file
+;Gt --> fuzy search for a pattern in any file that is a test file 
+
+/ --> trigger the vim-easymotion with two characters required
+fde -> delete currenty file 
+fy -> copy relative path of current file with #Lxx in the end, where xx is the line number. E.g.: src/sometile.ts#L32
+fY -> copy the absolute path of the current file
+fe -> show the file tree in the left (I use nerdtree but want see the vscode one)
+ff -> open the file tree where is the current file
+
+[leader]f -> format prettier all lines that are select, and if nothing is selected (normal mode), format the entire file
+
+
+sv -> split vertically
+sg -> split horizontaly
+sr -> rotate buffers, I have this neovim:   nnoremap <silent> sr <C-w>x
+ss -> swap pannes positions, I have this on neovim   nnoremap <silent> ss <C-w>R
+
+<leader>z -> toggle fold on the block under cursor
+<leader>za -> remove toggle on the block under cursor
+<leader>n -> n is a number/digit. It toggle fold on entire file at level n.
+     examples:
+    <leader>1 -> toggle fold on entire file at level 1
+    <leader>3 -> toggle fold on entire file at level 3
+    <leader>0 -> remove all fold 
+
+!! execute a command in the terminal
+!t a test for the openned file
+!T run a test for the test under the cursor, e.g.: If is a jest file and the cursor is on top of inside a it(), it will execute just that test 
+
+<leader>w  -> highlight the word under cursor
+<leader>h  -> highlight the selected text under with v
+<leader>H  -> clean all highlights
+
+mm  -> add a mark on the line of the current file (vim-bookmarks plugins)
+mn -> go to the next mark
+mp -> go the previous mark
+mc -> clean all marks
+
+
+

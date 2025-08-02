@@ -344,37 +344,9 @@ Plug 'marilari88/neotest-vitest'
 
 " DAP Debugger
 Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'mxsdev/nvim-dap-vscode-js'
-" -----------------------------------------------------------------------------
-" PHP and VDEBUG
-" -----------------------------------------------------------------------------
-  " Plug 'vim-vdebug/vdebug'
-  " " let g:vdebug_options = {'port': '9001'}
-  " " let g:vdebug_options = {'debug_file': '/home/felipe/vdebug.log'}
-  "   let g:vdebug_options = {
-  "         \ 'port' : 9001,
-  "         \ 'ide_key' : 'VSCODE',
-  "         \ 'path_maps': {
-  "             \ '/www/vhosts/hqm.ssense.com/': '/home/felipe/ssense/workspace/services/hq-central/'
-  "         \ }
-  "         \}
-
-" ALTERNATIVE: vimspector
-  " Plug 'puremourning/vimspector'
-  "   let g:vimspector_enable_mappings = 'HUMAN'
-
-" -----------------------------------------------------------------------------
-" Markdown (.md files) 
-" -----------------------------------------------------------------------------
-  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
-
-" -----------------------------------------------------------------------------
-" FIXES/Temporary
-" -----------------------------------------------------------------------------
-  " Plugin to save as sudo. ':sudo tee %' is not working on neovim
-  Plug 'lambdalisue/suda.vim'
+" Plug 'rcarriga/nvim-dap-ui'
+" Plug 'theHamsta/nvim-dap-virtual-text'
+" Plug 'mxsdev/nvim-dap-vscode-js'
 
 call plug#end()
 
