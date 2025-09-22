@@ -1,4 +1,5 @@
 {
+  // "inlayHint.enable": false, // deixar true, eh util. eh o inlay hint que mostra para que o paramtro eh usado. tipo vscode
   "languageserver": {
     "intelephense": {
       "command": "intelephense",
@@ -16,18 +17,12 @@
         "usePlaceholders": true
       }
     },
-    "ccls": {
-      "command": "ccls",
+    "clangd": {
+      "command": "/opt/homebrew/opt/llvm/bin/clangd",
       "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
       "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/", "."],
       "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        },
-        "client": {
-          "snippetSupport": true
-        },
-        "rootUri": "file://${workspaceFolder}"
+        "clangdFileStatus": true,
       }
     }
   },
