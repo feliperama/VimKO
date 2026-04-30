@@ -83,6 +83,9 @@
   " Indent file -> FIXME Temporalilly comment out due conflictwith vdebug
   " nnoremap <leader>e =ae<C-o>
 
+  " Indent paragraph
+  nnoremap <leader>a =ip
+
   " Remove empty spaces
   nnoremap <leader>, :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR><C-o>
 
