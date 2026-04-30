@@ -83,9 +83,6 @@
   " Indent file -> FIXME Temporalilly comment out due conflictwith vdebug
   " nnoremap <leader>e =ae<C-o>
 
-  " Indent paragraph
-  " nnoremap <leader>a =ip
-
   " Remove empty spaces
   nnoremap <leader>, :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR><C-o>
 
@@ -557,7 +554,7 @@ endfunction
       vimuxruncommand("node_env=dev ./node_modules/.bin/jest --config jest.config.ts ". relative_path)
     elseif( match(a:file_name_full_path, 'dm-customerorder\/contexts\/support.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
-      VimuxRunCommand("NODE_ENV=test.unit npx dotenvx run --overload -f .env.test.unit -- mocha --full-trace --bail ". relative_path)
+      VimuxRunCommand("./node_modules/.bin/mocha --full-trace --bail ". relative_path)
     elseif( match(a:file_name_full_path, 'dm-customercare\/contexts\/ui-oms.*.test.ts') != -1)
       let relative_path = fnamemodify(a:file_name_full_path, ":~:.")
       VimuxRunCommand("./node_modules/.bin/jest ". relative_path)
@@ -651,8 +648,10 @@ vmap <leader>f <Plug>(coc-format-selected)
 " format all file. Uses plugins depending on file type
 nnoremap <leader>f <Plug>(coc-format)
 
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <plug>(coc-codeaction-selected)
+" Indent paragraph
+" nnoremap <leader>a =ip
+xmap <leader>A  <Plug>(coc-codeaction-selected)
+nmap <leader>A  <plug>(coc-codeaction-selected)
 
 xmap <leader>r <plug>(coc-refactor)
 nmap <leader>r <plug>(coc-refactor)

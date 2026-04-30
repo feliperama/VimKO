@@ -48,5 +48,21 @@
   "tests/unit/*Test.php" : {
     "alternate" : "src/{}.php",
     "type": "tests"
+  },
+  "api/src/*.ts" : {
+    "alternate": "api/tests/unit/{}.test.ts",
+    "type": "source"
+  },
+  "api/tests/unit/*.test.ts" : {
+    "alternate" : "api/src/{}.ts",
+    "type": "tests"
+  },
+  "domain-pricing/src/*.ts" : {
+    "alternate": "domain-pricing/tests/unit/{}.test.ts",
+    "type": "source"
+  },
+  "domain-pricing/tests/unit/*.test.ts" : {
+    "alternate" : "domain-pricing/src/{}.ts",
+    "type": "tests"
   }
 }

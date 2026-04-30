@@ -348,7 +348,38 @@ Plug 'mfussenegger/nvim-dap'
 " Plug 'theHamsta/nvim-dap-virtual-text'
 " Plug 'mxsdev/nvim-dap-vscode-js'
 
+" AI
+Plug 'coder/claudecode.nvim'
+Plug 'folke/snacks.nvim'
+
 call plug#end()
 
 source $HOME/.config/nvim/config/neotest.vimrc
 source $HOME/.config/nvim/config/dap.vimrc
+
+lua << EOF
+require("claudecode").setup({
+  terminal_cmd = "/Users/felipe.favoreto/.local/bin/claude",
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*claude*",
+  callback = function()
+    local opts = { buffer = true, silent = true }
+    vim.keymap.set("t", "<C-h>", "<C-\\><C-n>:TmuxNavigateLeft<CR>", opts)
+    vim.keymap.set("t", "<C-j>", "<C-\\><C-n>:TmuxNavigateDown<CR>", opts)
+    vim.keymap.set("t", "<C-k>", "<C-\\><C-n>:TmuxNavigateUp<CR>", opts)
+    vim.keymap.set("t", "<C-l>", "<C-\\><C-n>:TmuxNavigateRight<CR>", opts)
+  end,
+})
+EOF
+
+nnoremap <leader>cc <cmd>ClaudeCode<cr>
+nnoremap <leader>cf <cmd>ClaudeCodeFocus<cr>
+nnoremap <leader>cr <cmd>ClaudeCode --resume<cr>
+nnoremap <leader>cC <cmd>ClaudeCode --continue<cr>
+nnoremap <leader>cm <cmd>ClaudeCodeSelectModel<cr>
+nnoremap <leader>cb <cmd>ClaudeCodeAdd %<cr>
+vnoremap <leader>cs <cmd>ClaudeCodeSend<cr>
+nnoremap <leader>ca <cmd>ClaudeCodeDiffAccept<cr>
+nnoremap <leader>cd <cmd>ClaudeCodeDiffDeny<cr>
