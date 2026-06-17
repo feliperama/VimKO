@@ -325,6 +325,12 @@ call plug#begin()
   Plug 'nanotech/jellybeans.vim'
 
 " -----------------------------------------------------------------------------
+" Markdown
+" -----------------------------------------------------------------------------
+  " Improved rendering of markdown in the buffer (requires nvim-treesitter)
+  Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+" -----------------------------------------------------------------------------
 " Linediff
 " -----------------------------------------------------------------------------
   Plug 'AndrewRadev/linediff.vim'
@@ -357,6 +363,18 @@ call plug#end()
 source $HOME/.config/nvim/config/neotest.vimrc
 source $HOME/.config/nvim/config/dap.vimrc
 
+lua require("render-markdown").setup({})
+
+nnoremap <leader>cc <cmd>ClaudeCode<cr>
+nnoremap <leader>cf <cmd>ClaudeCodeFocus<cr>
+nnoremap <leader>cr <cmd>ClaudeCode --resume<cr>
+nnoremap <leader>cC <cmd>ClaudeCode --continue<cr>
+nnoremap <leader>cm <cmd>ClaudeCodeSelectModel<cr>
+nnoremap <leader>cb <cmd>ClaudeCodeAdd %<cr>
+vnoremap <leader>cs <cmd>ClaudeCodeSend<cr>
+nnoremap <leader>ca <cmd>ClaudeCodeDiffAccept<cr>
+nnoremap <leader>cd <cmd>ClaudeCodeDiffDeny<cr>
+
 lua << EOF
 require("claudecode").setup({
   terminal_cmd = "/Users/felipe.favoreto/.local/bin/claude",
@@ -373,13 +391,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 EOF
-
-nnoremap <leader>cc <cmd>ClaudeCode<cr>
-nnoremap <leader>cf <cmd>ClaudeCodeFocus<cr>
-nnoremap <leader>cr <cmd>ClaudeCode --resume<cr>
-nnoremap <leader>cC <cmd>ClaudeCode --continue<cr>
-nnoremap <leader>cm <cmd>ClaudeCodeSelectModel<cr>
-nnoremap <leader>cb <cmd>ClaudeCodeAdd %<cr>
-vnoremap <leader>cs <cmd>ClaudeCodeSend<cr>
-nnoremap <leader>ca <cmd>ClaudeCodeDiffAccept<cr>
-nnoremap <leader>cd <cmd>ClaudeCodeDiffDeny<cr>

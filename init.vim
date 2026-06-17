@@ -1,3 +1,4 @@
+let mapleader="\<space>"
 source $HOME/.config/nvim/config/plugins.vimrc
 source $HOME/.config/nvim/config/theme.vimrc
 source $HOME/.config/nvim/config/mappings.vimrc
@@ -45,7 +46,8 @@ set display=lastline
 set cursorline
 
 " Tabs and Indents
-set textwidth=80  " Text width maximum chars before wrapping
+set textwidth=80        " Text width maximum chars before wrapping
+set formatoptions-=t    " Don't auto-wrap text while typing
 set expandtab     " Don't expand tabs to spaces.
 set tabstop=4     " The number of spaces a tab is
 set softtabstop=4 " While performing editing operations
@@ -94,7 +96,7 @@ autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType jsonc setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType text setlocal textwidth=0
+autocmd FileType text setlocal textwidth=0 formatoptions-=t formatoptions-=c
 autocmd FileType markdown setlocal textwidth=0
 autocmd FileType c,cpp let b:coc_root_patterns = ['.', '.ccls', 'compile_commands.json', '.git']
 autocmd FileType c,cpp setlocal iskeyword-=-

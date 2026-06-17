@@ -281,5 +281,10 @@ $ git clone git@github.com:AlexVKO/VimKO.git nvim
 
 And then inside neovim run :PlugInstall
 ```
+
+Install the treesitter parsers required by render-markdown.nvim:
+```
+:TSInstall markdown markdown_inline
+```
 Inspired by:
   - https://github.com/rafi/vim-config
