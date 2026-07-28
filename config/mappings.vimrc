@@ -42,7 +42,7 @@
 
 
   " Reload command
-  command! Reload :so ~/.config/nvim/init.vim
+  command! Reload :so $MYVIMRC
 
   " go to normal mode and save
   " inoremap ;w <Esc> :w<CR> :call RunTestsOnLeftPane(expand('%')) <CR>
@@ -406,7 +406,7 @@ nnoremap <silent> <leader>d :call DebugCursorDiagnostics()<CR>
 " -----------------------------------------------------------------------------
 " UltiSnips
 " -----------------------------------------------------------------------------
-  " Always open at ~/.config/nvim/UltiSnips  
+  " Always open at <this config dir>/UltiSnips
   nnoremap <leader>es :UltiSnipsEdit<cr>
 
 " -----------------------------------------------------------------------------

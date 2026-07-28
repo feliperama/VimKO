@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/neotest_helpers.lua
+-- lua/neotest_helpers.lua (loaded from this config's own lua/ dir)
 local M = {}
 
 function M.open_output_for_node_at_cursor()

@@ -1,5 +1,38 @@
 # Personal vim configuration 
 
+## Running this (legacy) config side by side with a modern one
+
+This is the pre-Lua config (vim-plug + coc.nvim). It is meant to be run through
+`NVIM_APPNAME` so it can coexist with a newer config in `~/.config/nvim`:
+
+```sh
+NVIM_APPNAME=nvim-old nvim
+```
+
+Nothing in here hardcodes `~/.config/nvim` any more — sources are resolved
+relative to `init.vim`, and plugin/data paths come from `stdpath()`, which
+follows `NVIM_APPNAME`. With the command above, everything this config reads or
+writes lives under:
+
+| What | Where |
+| --- | --- |
+| Config | `~/.config/nvim-old` |
+| Plugins (vim-plug) | `~/.local/share/nvim-old/plugged` |
+| vim-plug itself | `~/.local/share/nvim-old/site/autoload/plug.vim` (auto-installed if missing) |
+| JS debug adapter | `~/.local/share/nvim-old/vscode-js-debug` |
+| Shada/swap/undo, cache | `~/.local/state/nvim-old`, `~/.cache/nvim-old` |
+
+So `:PlugInstall` / `:PlugUpdate` here cannot affect the plugins of the config
+in `~/.config/nvim`.
+
+Two things are still deliberately shared with the rest of the system, since
+they are not Neovim-private:
+
+- `~/.fzf` — its `bin/fzf` is the `fzf` on `$PATH`. This config only adds it to
+  `runtimepath` (read-only); it will **not** `git pull` it or re-run
+  `./install --all`, which would rewrite that binary and your shell rc.
+- `~/.config/coc` (coc.nvim extensions) and `~/.venvs/nvim` (python3 host).
+
 ## Changelog 
   Changed to tab to jump (dont need supertabs)
 ##

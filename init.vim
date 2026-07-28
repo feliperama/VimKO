@@ -1,7 +1,12 @@
 let mapleader="\<space>"
-source $HOME/.config/nvim/config/plugins.vimrc
-source $HOME/.config/nvim/config/theme.vimrc
-source $HOME/.config/nvim/config/mappings.vimrc
+
+" Directory of this file. Everything is sourced relative to it so the config
+" works from any location, including under NVIM_APPNAME (NVIM_APPNAME=nvim-old
+" nvim), where $HOME/.config/nvim is a different config entirely.
+let g:vimrc_dir = expand('<sfile>:p:h')
+execute 'source' fnameescape(g:vimrc_dir . '/config/plugins.vimrc')
+execute 'source' fnameescape(g:vimrc_dir . '/config/theme.vimrc')
+execute 'source' fnameescape(g:vimrc_dir . '/config/mappings.vimrc')
 
 "NOT SURE, may be a problem for tsscript server
 "I THINK is not necessary, let coc-tsserver and other plugins to made syntax
@@ -129,7 +134,7 @@ set norelativenumber
 
 function! ToggleVerbose()
     if !&verbose
-        set verbosefile=~/.config/nvim/verbose.log
+        execute 'set verbosefile=' . fnameescape(stdpath('log') . '/verbose.log')
         set verbose=9
     else
         set verbose=0

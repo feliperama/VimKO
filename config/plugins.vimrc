@@ -1,4 +1,19 @@
-call plug#begin()
+" Directory of this file (<config>/config), used for every source below.
+let s:config_dir = expand('<sfile>:p:h')
+
+" Keep vim-plug and the plugins inside this config's own data dir
+" (stdpath('data') is ~/.local/share/nvim-old under NVIM_APPNAME=nvim-old), so
+" running this config never touches another config's plugins.
+let s:plug_file = stdpath('data') . '/site/autoload/plug.vim'
+if !filereadable(s:plug_file)
+  echo 'Installing vim-plug into ' . s:plug_file
+  call system('curl -fLo ' . shellescape(s:plug_file) . ' --create-dirs '
+        \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+  execute 'source' fnameescape(s:plug_file)
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(stdpath('data') . '/plugged')
 
 " -----------------------------------------------------------------------------
 " General
@@ -9,7 +24,7 @@ call plug#begin()
 
   " granular project configuration using projections
   Plug 'tpope/vim-projectionist'
-  source $HOME/.config/nvim/config/plugins/projectionist.vimrc
+  execute 'source' fnameescape(s:config_dir . '/plugins/projectionist.vimrc')
 
   " Fuzzy finder for lines in the current file
   Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -100,9 +115,19 @@ call plug#begin()
 " -----------------------------------------------------------------------------
 " Fuzzy finder
 " -----------------------------------------------------------------------------
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  " ~/.fzf is shared: its bin/fzf is the fzf on $PATH (sourced by ~/.fzf.zsh)
+  " and the one the modern config's fzf-lua drives. So consume it read-only
+  " instead of letting vim-plug git-pull it and re-run ./install --all, which
+  " would rewrite a binary and shell rc that other things depend on.
+  if isdirectory(expand('~/.fzf'))
+    set runtimepath+=~/.fzf
+  else
+    " No shared install: keep our own copy inside this config's data dir.
+    " --bin only, so the shell rc files are never touched.
+    Plug 'junegunn/fzf', { 'dir': stdpath('data') . '/fzf', 'do': './install --bin' }
+  endif
   Plug 'junegunn/fzf.vim'
-  source $HOME/.config/nvim/config/plugins/fzf.vimrc
+  execute 'source' fnameescape(s:config_dir . '/plugins/fzf.vimrc')
   let g:fzf_layout = { 'down': '~40%' }
 
 " -----------------------------------------------------------------------------
@@ -115,7 +140,8 @@ call plug#begin()
   " install.sh to install. Not sure if is a plugin or a SO stuff
   " Plug 'ryanoasis/vim-devicons',{ 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
   " Need the following command to work commands inside nerdtree buffer:
-  autocmd! User nerdtree exe 'source' '$HOME/.config/nvim/config/plugins/nerdtree.vim'
+  " Path is expanded now, at definition time, not when the autocmd fires.
+  execute 'autocmd! User nerdtree source ' . fnameescape(s:config_dir . '/plugins/nerdtree.vim')
 
 " -----------------------------------------------------------------------------
 " Airline
@@ -224,7 +250,7 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'
     let g:goyo_height='95%'
     let g:goyo_width='120'
-    autocmd! User GoyoLeave nested exec ':so ~/.config/nvim/init.vim'
+    autocmd! User GoyoLeave nested exec ':so $MYVIMRC'
 
 " -----------------------------------------------------------------------------
 " Git
@@ -360,8 +386,8 @@ Plug 'folke/snacks.nvim'
 
 call plug#end()
 
-source $HOME/.config/nvim/config/neotest.vimrc
-source $HOME/.config/nvim/config/dap.vimrc
+execute 'source' fnameescape(s:config_dir . '/neotest.vimrc')
+execute 'source' fnameescape(s:config_dir . '/dap.vimrc')
 
 lua require("render-markdown").setup({})
 

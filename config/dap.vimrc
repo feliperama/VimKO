@@ -7,7 +7,9 @@ dap.adapters["pwa-node"] = {
   port = "${port}",
   executable = {
     command = "node",
-    args = {os.getenv("HOME") .. "/.local/share/nvim/vscode-js-debug/dist/src/vsDebugServer.js", "${port}"},
+    -- stdpath('data') follows NVIM_APPNAME, so this stays inside this config's
+    -- own data dir (~/.local/share/nvim-old/vscode-js-debug).
+    args = {vim.fn.stdpath("data") .. "/vscode-js-debug/dist/src/vsDebugServer.js", "${port}"},
   }
 }
 
